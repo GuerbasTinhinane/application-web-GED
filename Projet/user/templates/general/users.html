@@ -1,0 +1,114 @@
+
+{% extends 'general/base.html' %}
+{% load static %}
+{% block content %}
+<style>"background: url('static/images/imag01.jpg') no-repeat center fixed; 
+    -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */"
+    img{height:200px;
+    width:400px;
+     }
+     .inter{
+      display:flex;
+      gap:30px;
+     }
+     .cont{
+      color: #353839;
+     }
+
+</style>
+
+<div class="cont" style="background: rgba(255,255,255,0.8);">
+    <h2> Tous les utilisateurs</h2>
+    <table id="example" class="styled-table display">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>email</th>
+                <th>Role</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for u in users %}
+            <tr>
+            <td>{{u.username}}</td>
+            <td>{{u.first_name}}</td>
+            <td>{{u.last_name}}</td>
+            <td>{{u.email}}</td>
+            <td>{% if u.is_chefdep %}
+                Chef du departement
+               {% endif %}
+               {% if u.is_juriste %}
+                Cadre juridique
+               {% endif %}
+               {% if u.is_admin %}
+                Administrateur
+               {% endif %}
+            </td>
+            <td><a href="#" class="update" ><i class='bx bxs-edit up'></i></a>
+                <a href="#" class="del" ><i class='bx bxs-trash de'></i></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="cont"style=" position:fixed; top:90%; left:5%; font-weight: 600
+">  
+<a href="{% url 'admin' %}" >
+Retour à la page d'accueil </a>
+</div>
+
+    <script>
+        var sousheader=document.querySelector('.sous-header') 
+var downarrow = document.querySelector('header .bxs-down-arrow') 
+
+downarrow.addEventListener('click',function(){
+  if (sousheader.classList.contains('afficher'))
+  {sousheader.classList.remove('afficher')
+  downarrow.style.color='#707070'
+  sousheader.classList.add('masquer')
+  
+  }
+  else
+  {sousheader.classList.remove('masquer')
+  downarrow.style.color='#ff8c00'
+    sousheader.classList.add('afficher')
+  }
+})
+  
+</script>
+
+
+
+    {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

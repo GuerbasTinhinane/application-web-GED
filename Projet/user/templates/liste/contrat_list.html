@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    
+    <title>Affichage</title>
+    <!-- {% load sweetify %}
+    {% sweetify %} -->
+</head>
+<body>
+    <h1>Contrats</h1>
+    <br><br>
+    <table class="table">
+        <thead>
+            <tr>
+              <th>Consulter</th>
+              <th>id contrat</th>
+              <th>Loi</th>
+              <th>Date signature</th>
+              <th>num decret</th>
+              <th>date decret</th>
+              <th>date debut</th>
+              <th>date approbation</th>
+              <th>financement</th>
+              <th>phase </th>
+              <th>date fin</th>
+              <th>pdf</th>
+              <th>operateur</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ctr in contrats %}
+            <tr>
+                {% comment %} <td>  <a href="{% url 'affiche_detail_contrat' ctr.id_contrat%}">ici</a> </td> {% endcomment %}
+                <td>{{ ctr.id_contrat }}</td>
+                <td>{{ ctr.titre_contrat }}</td>
+                <td>{{ ctr.date_signature_contrat }}</td>
+                <td>{{ ctr.num_decret}}</td>
+                <td>{{ ctr.date_decret}}</td>
+                <td>{{ ctr.date_approbation_pod}}</td>
+                <td>{{ ctr.financement_SH}}</td>
+                <td>{{ ctr.phase_contrat}}</td>
+                <td>{{ ctr.date_fin_contrat}}</td>
+                <td>{{ ctr.contrat}}</td>
+                <td>{{ ctr.operateur}}</td>
+                <td>
+                    <a href="{{ acc.accord.url }}" class="btn btn-primary btn-sm" target="_blank">
+                     view PDF
+                    </a>
+                </td>
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

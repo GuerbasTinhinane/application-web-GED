@@ -1,0 +1,20 @@
+{% extends 'general/base2.html' %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+
+        <h1 >404</h1>
+        <h5>Vous n'avez pas accés à cette page </h5>
+        <a href="#">Retour à la page d'acceuil</a>
+  
+    {% else %}
+  
+        <h1 class="petit">Erreur</h1>
+        <h5>Vous n'êtes actuellement pas connecté </h5>
+        <a href="{% url "home" %}">Cliquez ici pour vous connecter</a>
+        
+      
+    {% endif %}
+{% endblock %}
+

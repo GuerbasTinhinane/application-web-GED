@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+
+body{background-color: black	;
+color:#CDC9C9;
+font-family:sans-serif;
+}
+
+h1{ margin-top: 100px;
+    font-size:200px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+.petit{font-size:100px}
+h2{text-transform: uppercase;font-size: 30px;
+    font-style:Arial;
+    font-weight: 300;margin-top: 0;}
+    
+h3{font-style:Arial;}
+h5{
+font-size: 20px;
+font-style:Arial;
+font-weight: 300;
+}
+a{
+font-size: 15px;
+color:#fff;
+text-decoration: none;
+}
+a:hover{
+width:500px;
+border-bottom: 1px solid #fff;
+}

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Convention</title>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href={% static 'css/style.css' %} >
+  <link rel="stylesheet" type="text/css" href={% static 'css/ajouter.css' %} >
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+  <link rel="icon" type="image/png"  href={% static 'images/logo.png' %}>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    .error{
+      font-size:12px;
+      color:red;
+      margin-left:20px;
+    }
+   </style>
+</head>
+
+  <body>
+    {% if messages %}
+    {% for m in messages %}
+    <script>
+     Swal.fire({
+      icon:'success',
+      position: 'top',
+      text: "{{m}}",
+      showConfirmButton: false,
+      timer:2500
+    })
+    </script>
+    {% endfor %}
+    {% endif%}
+
+    <nav class="sidebar ">
+      <header>
+        <div class="image-text">
+           <span class="image">
+              <img src={% static 'images/logo-removebg-preview.png' %} alt="logo">
+           </span>
+
+           <div class="text header-text">
+            <span class='name'> SONATRACH </span>
+          </div>
+          
+          
+        </div>
+        <i class='bx bx-menu toggle'></i>
+      </header>
+
+      <div class="menu-bar">
+        <div class="menu">
+         
+          <ul class="menu-link">
+
+          
+
+                <div class="droppdown">
+                  <li class="nav-link dropbtn ">
+                    <a  >
+                      <i class='bx bx-file icon'></i>
+                      <span class="text nav-text">Soit transmis</span>
+                    </a>
+                  </li>
+                  <div class="dropdownst-content">
+                    <a href=" {% url "st_create" %} "class='ast'><i class='bx bx-list-plus'></i> Ajouter </a>
+                    <a href=" {% url "update_st" 0 %} "class='cst'><i class='bx bx-show-alt'></i> Consulter</a>
+                  </div>
+                </div>
+              
+
+                
+                <div class="droppdown">
+                  <li class="nav-link dropbtn ">
+                    <a>
+                      <i class="fa fa-files-o icon" aria-hidden="true"></i>
+                      <span class="text nav-text">Contrats</span>
+                    </a>
+                  </li>
+                  <div class="dropdownct-content">
+                    <a href=" {% url "contrat_create" %} " class='act'><i class='bx bx-list-plus'></i> Ajouter </a>
+                    <a href=" {% url "update_contrat" '0' %} " class='cct'><i class='bx bx-show-alt'></i> Consulter</a>
+                  </div>
+                </div>
+               
+
+            <li class="nav-link down">
+              <a style="background:whitesmoke;"> 
+                <i class='bx bx-folder-open icon'></i>
+                <span class="text nav-text">Documents <br> Contractuels <i class='bx bxs-chevron-down dropdown-btn'></i> </span>
+              </a>
+            </li>
+
+            <div class="drop-down">
+            <ul class="dropdown-container hide ">
+             
+              <div class="droppdown1 sous-menu">
+                <li class="dropbtn1">
+                  -  Convention de <br> détachement
+                </li>
+                <div class="dropdownconv-content">
+                  <a href=" {% url "convention_create" %} " class="a1"><i class='bx bx-list-plus'></i> Ajouter </a>
+                  <a href=" {% url "update_convention" '0' %} "  class="a2"><i class='bx bx-show-alt'></i> Consulter</a>
+                </div>
+              </div>
+
+              <div class="droppdown2 sous-menu">
+                <li class="dropbtn2">
+                 -  Avenant
+                </li>
+                <div class="dropdownav-content ">
+                  <a href=" {% url "avenant_create" %} "  class="a3"><i class='bx bx-list-plus'></i> Ajouter </a>
+                  <a href=" {% url "update_avenant" '0' %} "  class="a4"><i class='bx bx-show-alt'></i> Consulter</a>
+                </div>
+              </div>
+
+              <div class="droppdown3 sous-menu">
+                <li class="dropbtn3">
+                  -  Lettre accord
+                </li>
+                <div class="dropdownla-content">
+                  <a href=" {% url "lettreAccord_create" %} "  class="a5"><i class='bx bx-list-plus'></i> Ajouter </a>
+                  <a href=" {% url "update_lettreAccord" '0' %} "  class="a6"><i class='bx bx-show-alt'></i> Consulter</a>
+                </div>
+              </div>
+
+              <div class="droppdown4 sous-menu">
+                <li class="dropbtn4">
+                  -  Accord
+                </li>
+                <div class="dropdownac-content">
+                  <a href=" {% url "accord_create" %} "  class="a7"><i class='bx bx-list-plus'></i> Ajouter </a>
+                  <a href=" {% url "update_accord" '0' %} "  class="a8"><i class='bx bx-show-alt'></i> Consulter</a>
+                </div>
+              </div>
+
+              <div class="droppdown5 sous-menu">
+                <li class=" dropbtn5">
+                  -  Accord d'operation
+                </li>
+                <div class="dropdownaop-content">
+                  <a href=" {% url "accordOperation_create" %} "  class="a9"><i class='bx bx-list-plus'></i> Ajouter </a>
+                  <a href=" {% url "update_accordOp" '0' %} "  class="a10"><i class='bx bx-show-alt'></i> Consulter</a>
+                </div>
+              </div>
+              
+            </ul>
+          </div>
+       
+
+            <div class="droppdown">
+              <li class="nav-link dropbtn ">
+                <a>
+                  <i class="fa fa-balance-scale icon" aria-hidden="true"></i>
+                  <span class="text nav-text">Avis juridique</span>
+                </a>
+              </li>
+              <div class="dropdownaj-content">
+                <a href=" {% url "avisJuridique_create" %} "class='aaj'><i class='bx bx-list-plus'></i> Ajouter </a>
+                <a href=" {% url "update_avis" '0' %} " class='caj'><i class='bx bx-show-alt'></i> Consulter</a>
+              </div>
+            </div>
+
+
+            <div class="droppdown">
+              <li class="nav-link dropbtn ">
+                <a>
+                  <i class='bx bx-pencil icon'></i>
+                  <span class="text nav-text">Points de situations</span>
+                </a>
+              </li>
+              <div class="dropdownpds-content">
+                <a href=" {% url "pds_create" %} " class='apds'><i class='bx bx-list-plus'></i> Ajouter </a>
+                <a href=" {% url "update_pds" '0' %} " class='cpds'><i class='bx bx-show-alt'></i> Consulter</a>
+              </div>
+            </div>
+            <li class="nav-link navlink2">
+              <a href="{% url "dashboard" %}">
+                <i class="fa fa-tachometer icon" aria-hidden="true"></i>
+                <span class="text nav-text">Dashboard</span>
+              </a>
+            </li>
+            
+        
+        
+        </div>
+      </div>
+    </nav>
+    
+        <section class="home">
+          <li class="link2 hide">Soit transmis</li>
+          <li class="link3 hide">Contrats</li>
+          <li class="link4 hide">Documents contractuels</li>
+          <li class="link5 hide">Avis juridique</li>
+          <li class="link6 hide">Points de situations</li>
+          <li class="link7 hide">Dashboard</li>
+          <li class="link8 hide">Historique</li>
+      <li class="slink1 hide">Convention de détachement</li>
+      <li class="slink2 hide">Avenant</li>
+      <li class="slink3 hide">Lettre accord</li>
+      <li class="slink4 hide">Accord</li>
+      <li class="slink5 hide">Accord d'opérations</li>
+     <header>
+      <h1>  <i class="fa fa-balance-scale" aria-hidden="true"></i> Gestion des contrats d'associations</h1>
+      <span class="nomprenom"><i class='bx bxs-user-circle '></i> {{ request.user.first_name }} {{ request.user.last_name }} <i class='bx bxs-down-arrow ' ></i></span>
+</header>
+    <ul class="sous-header masquer">
+      <li><a href=" {% url "logoutUser" %} "><i class='bx bx-log-out'></i>Deconnexion</li></a>
+      <li><a href="{% url "password_change" %}"><i class="fa fa-cog" aria-hidden="true"></i>Paramètres</li></a>
+    </ul>
+
+    
+    
+    <div class="container">
+      <h3>Convention de détachement du personel</h3>
+      <div class="header">
+        <a href="{% url 'chefdep' %}"> <i class='bx bx-home-alt icon'></i></a> / Convention de détachement/ <a href="{% url "convention_create" %}">Nouvelle convention de détachement</a>   </div>
+         <div class="entete">
+          <li><a href=" {% url "update_convention" '0' %} ">Consulter</a></li>
+         </div> 
+     <div class="form">
+      <form method="POST" id="ajouterdc"  enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2>Convention de détachement</h2>
+        <div class="containerform accordop">
+        <div class="left">
+          <div class="label">
+            <label for="id">Contrat associé </label>
+            <label for="title">Titre de la convention de détachement</label>
+          </div>
+           <div class="input"> 
+            {% if error != "" %}
+            <select name="contrat">
+              <option selected="selected" value="{{ form.contrat.value }}">{{ form.contrat.value }}</option>
+              {% for choice in form.contrat.field.choices %}
+                  <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+              {% endfor %}
+            </select>  <br>
+            {% else %}
+            <select name="contrat">
+              {% for choice in form.contrat.field.choices %}
+                  <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+              {% endfor %}
+            </select>  <br>
+            {% endif %}
+            {% if error == ""%}
+            <input type="text" maxlength="200" name="titre" id="title" required> 
+           {% else %}
+            <input type="text" maxlength="200" style="border:3px solid red;" value ="{{form.titre.value}}" name="titre" id="title" required> 
+            <span class="error">{{error}}</span>
+           {% endif %} 
+
+          </div>
+         </div>
+        <div class="right">
+          <div class="label">
+            <label for="datee">Date de signature</label>
+            <label for="pdf">Document</label>
+          </div>
+          <div class="input">
+            <input type="date"  name="date_de_signature" id="datee"  value ="{{form.date_de_signature.value}}" required>  <br>
+            <input type="file"  name="doc_pdf" id="pdf" required> <br>
+          </div>
+         
+        </div>
+      </div>
+      <div class="boutton">
+        <input type="submit" value="Valider">
+      </div>
+      </form>
+    </div>
+    </div>
+  
+    </section>
+
+
+
+
+<!-- partial -->
+<script  src={% static "js/script.js" %}></script>
+<script  src={% static "js/media.js" %}></script>
+<script>
+  var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth() + 1; //January is 0!
+var yyyy = today.getFullYear();
+var datee =document.getElementById('datee');
+
+if (dd < 10) {
+  dd = '0' + dd
+}
+
+if (mm < 10) {
+  mm = '0' + mm
+}
+
+today = yyyy + '-' + mm + '-' + dd;
+
+window.addEventListener('load',function(){
+datee.setAttribute("max", today);
+})
+
+  </script>
+</body>
+</html>

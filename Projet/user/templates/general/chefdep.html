@@ -1,0 +1,216 @@
+
+<!DOCTYPE html>
+<html lang="en" style="background: url('static/images/imag01.jpg') no-repeat center fixed; 
+-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+background-size: cover; /* version standardisée */"
+>
+<head>
+  {% load i18n %}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accueil</title>
+  {% load static %}
+    <link rel="stylesheet" type="text/css" href={% static 'css/accueil.css' %}>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+ 
+  <link rel="icon" type="image/png"  href={% static 'images/logo.png' %}>
+  <link rel="stylesheet" href={% static "css/accueil.css" %}>
+  <style>
+    button{border:none; background: none;cursor:pointer}
+    button{text-decoration: none; color:#353839}
+    .sous-header button{
+  color:#696969;
+  font-weight:550;
+  font-size: 13px;
+  font-family: arial;
+  text-decoration: none;
+  }
+  .sous-header button :hover{
+  color:#ff8c00;
+  } 
+  </style>
+  
+</head>
+
+  <body>
+  <header>
+
+   
+    <div class="image-text">
+        <span class="image">
+          <img src={% static 'images/logo-removebg-preview.png' %} alt="">
+        </span>
+       
+     
+     <div class="text header-text">
+      <h3><!--Sonatrach--></h3>
+     </div>
+   
+    </div>
+  <div class="div2">
+     <h1> <i class="fa fa-balance-scale" aria-hidden="true"></i> Gestion des contrats d'associations</h1>
+     <span class="nomprenom"><i class='bx bxs-user-circle '></i> {{ request.user.first_name }} {{ request.user.last_name }} <i class='bx bxs-down-arrow ' ></i></span>
+    </div>
+  </header>
+  <ul class="sous-header masquer">
+    <li><a href=" {% url "logoutUser" %} "><i class='bx bx-log-out'></i>Deconnexion</li></a>
+    <li><a href="{% url "password_change" %}"><i class="fa fa-cog" aria-hidden="true"></i>Paramètres</li></a>
+  </ul>
+
+<div class="container">
+    <div class="containerhead">
+      <div class="info">{% if request.user.is_authenticated %}
+        
+        <li>Utilisateur connecté : {{user.first_name}}  {{user.last_name}}</li>
+        <li>Profession : {% if user.is_chefdep %}
+          Chef du departement
+         {% endif %}
+         {% if user.is_juriste %}
+          Cadre juridique
+         {% endif %}
+         {% if user.is_admin %}
+          Administrateur
+         {% endif %}</li>
+        <li>Dernière connexion :{% language 'fr' %}
+          {{ user.last_login|date:'d F Y' }},  {{ user.last_login|time:"H:i" }}
+       {% endlanguage %} </li>
+        
+      {% endif %}
+        
+        
+      </div>
+      <div class="dashboard">
+        <a href ="{% url "dashboard" %}">
+           <i class="fa fa-tachometer" aria-hidden="true"></i>Tableau de bord </i>
+        </a>
+      </div>
+
+      <div class="historique">
+        <a href="{% url "view_history" %}">
+           <i class='bx bx-history'></i> Historique
+        </a>
+      </div>
+    </div>
+    <div class="cont_home">
+      <h4>  Dossiers</h4>
+      <div class="dossindividuel">
+
+          <div class="contdossier">
+           <a href=" {% url "update_st" '0' %} ">
+            <img src={% static 'images/Generica_25576.png' %} alt="">
+           </a>
+           <h6> Soit transmis</h6>
+           </div>
+
+           <div class="contdossier">
+            <a href=" {% url "update_contrat" '0' %} ">
+                <img src={% static 'images/Generica_25576.png' %} alt="">
+            </a>
+            <h6> Contrat</h6>
+            </div>
+            <div class="contdossier">
+              <a href=" {% url "update_avis" '0' %} ">
+                <img src={% static 'images/Generica_25576.png' %} alt="">
+              </a>
+              <h6> Avis juridique</h6>
+              </div>
+
+              <div class="contdossier">
+                <a href=" {% url "update_pds" '0' %} ">
+                    <img src={% static 'images/Generica_25576.png' %} alt="">
+                </a>
+                <h6> Point de situation</h6>
+                </div>
+    </div>    
+    <div class="dossier2">
+      <div class="contdossier">
+        <a>
+            <img src={% static 'images/folders_folder_20348.png' %} alt="">
+        </a>
+        <h6>Documents contractuels</h6>
+        </div>
+    </div>
+    <div class="masquer doc2">
+   
+      <div class="contdossier">
+        <a href=" {% url "update_convention" '0' %} ">
+            <img src={% static 'images/Generica_25576.png' %} alt="">
+        </a>
+        <h6> Convention de <br>  détachement</h6>
+        </div>
+
+       <div class="contdossier">
+        <a href=" {% url "update_avenant" '0' %} ">
+            <img src={% static 'images/Generica_25576.png' %} alt="">
+        </a>
+        <h6> Avenant</h6>
+        </div>
+
+        <div class="contdossier">
+          <a href=" {% url "update_lettreAccord" '0' %} ">
+            <img src={% static 'images/Generica_25576.png' %} alt="">
+          </a>
+          <h6> Lettre accord</h6>
+          </div>
+
+          <div class="contdossier">
+            <a href=" {% url "update_accord" '0' %} ">
+                <img src={% static 'images/Generica_25576.png' %} alt="">
+            </a>
+            <h6>  Accord </h6>
+            </div>
+
+            <div class="contdossier">
+              <a href=" {% url "update_accordOp" '0' %} ">
+                <img src={% static 'images/Generica_25576.png' %} alt="">
+              </a>
+              <h6>  Accord d'operation</h6>
+              </div>
+</div> 
+    </div>
+  </div>
+    <script>
+      var  documents= document.querySelector('.doc2')
+      var img = document.querySelector('.dossier2 img')
+      var h6 = document.querySelector('.dossier2 h6')
+
+      img.addEventListener('click',function(){
+    if (documents.classList.contains('doss2'))
+    {documents.classList.remove('doss2')
+    documents.classList.add('masquer')
+    h6.style.color='#1d2951'
+    
+    }
+    else
+    {documents.classList.remove('masquer')
+      documents.classList.add('doss2')
+      h6.style.color='#ff4f00'
+    }
+  })
+  
+/*--------------------------------------------------------*/
+      var sousheader=document.querySelector('.sous-header') 
+  var downarrow = document.querySelector('header .bxs-down-arrow') 
+  
+  downarrow.addEventListener('click',function(){
+    if (sousheader.classList.contains('afficher'))
+    {sousheader.classList.remove('afficher')
+    downarrow.style.color='#707070'
+    sousheader.classList.add('masquer')
+    
+    }
+    else
+    {sousheader.classList.remove('masquer')
+    downarrow.style.color='#ff8c00'
+      sousheader.classList.add('afficher')
+    }
+  })
+    
+    </script>
+   
+    <div>
+</body>
+</html>
+

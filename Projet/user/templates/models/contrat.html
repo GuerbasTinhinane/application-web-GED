@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Contrat</title>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href={% static 'css/style.css' %} >
+  <link rel="stylesheet" type="text/css" href={% static 'css/ajouter.css' %} >
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="icon" type="image/png"  href={% static 'images/logo.png' %}>
+<style>
+.leftlabel label:nth-of-type(1){top:-10px}
+.leftlabel label:nth-of-type(2){top:-17px}
+.leftlabel label:nth-of-type(3){top:-20px}
+.leftlabel label:nth-of-type(4){top:-27px ;}
+.leftlabel label:nth-of-type(5){top:-33px ;}
+.leftlabel label:nth-of-type(6){top:-37px ;}
+.leftlabel label:nth-of-type(7){top:-40px ;}
+.leftlabel label:nth-of-type(8){top:-40px ;}
+.leftinput select:nth-of-type(2) {position:relative;top:-20px}
+.leftinput input:nth-of-type(5) {position:relative;top:-30px; }
+.leftinput input:nth-of-type(6) {position:relative;top:-50px;}
+.rightlabel label:nth-of-type(3){position:relative;top:-17px ; }
+.rightlabel label:nth-of-type(4){position:relative;top:-20px ;}
+.rightlabel label:nth-of-type(5){position:relative;top:-24px ;}
+.rightlabel label:nth-of-type(6){position:relative;top:-23px ;}
+.rightlabel label:nth-of-type(7){position:relative;top:-30px ;}
+.rightinput input:nth-of-type(7) {position:relative;top:0px; }
+.submit2{top:-45px;position:relative}
+.rightinput{position:relative;top:-25px}
+.erreur{color:red; font-size:12px; visibility:hidden; width:0; height:0}
+.half1 label {position:relative; top:-7px}
+.half2 input , .half2 label , .half2 select {margin:15px 0 0 15%;}
+.half2 label {position:relative; top:15px}
+
+.financement input[type='submit']{position:relative; left:-20px}
+
+  .error{
+    font-size:12px;
+    color:red;
+    margin-left:25px;
+  }
+</style>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+  <body>
+    {% if messages %}
+    {% for m in messages %}
+    <script>
+     Swal.fire({
+      icon:'success',
+      position: 'top',
+      text: "{{m}}",
+      showConfirmButton: false,
+      timer:2500
+    })
+    </script>
+    {% endfor %}
+    {% endif%}
+
+    <nav class="sidebar ">
+      <header>
+        <div class="image-text">
+           <span class="image">
+              <img src={% static 'images/logo-removebg-preview.png' %} alt="logo">
+           </span>
+
+           <div class="text header-text">
+            <span class='name'> SONATRACH </span>
+          </div>
+          
+          
+        </div>
+        <i class='bx bx-menu toggle'></i>
+      </header>
+
+      <div class="menu-bar">
+        <div class="menu">
+         
+          <ul class="menu-link">
+
+        
+                <div class="droppdown">
+                  <li class="nav-link dropbtn ">
+                    <a  >
+                      <i class='bx bx-file icon'></i>
+                      <span class="text nav-text">Soit transmis</span>
+                    </a>
+                  </li>
+                  <div class="dropdownst-content">
+                    <a href=" {% url "st_create" %} "class='ast'><i class='bx bx-list-plus'></i> Ajouter </a>
+                    <a href=" {% url "update_st" 0 %} "class='cst'><i class='bx bx-show-alt'></i> Consulter</a>
+                  </div>
+                </div>
+              
+
+                
+                <div class="droppdown">
+                  <li class="nav-link dropbtn ">
+                    <a style="background:whitesmoke;">
+                      <i class="fa fa-files-o icon" aria-hidden="true"></i>
+                      <span class="text nav-text">Contrat</span>
+                    </a>
+                  </li>
+                  <div class="dropdownct-content">
+                    <a href=" {% url "contrat_create" %} " class='act'><i class='bx bx-list-plus'></i> Ajouter </a>
+                    <a href=" {% url "update_contrat" '0' %} " class='cct'><i class='bx bx-show-alt'></i> Consulter</a>
+                  </div>
+                </div>
+               
+
+            <li class="nav-link down">
+              <a> 
+                <i class='bx bx-folder-open icon'></i>
+                <span class="text nav-text">Documents <br> Contractuels <i class='bx bxs-chevron-down dropdown-btn'></i> </span>
+              </a>
+            </li>
+
+            <div class="drop-down">
+            <ul class="dropdown-container hide ">
+             
+              <div class="droppdown1 sous-menu">
+                <li class="dropbtn1">
+                  -  Convention de <br> détachement
+                </li>
+                <div class="dropdownconv-content">
+                  <a href=" {% url "convention_create" %} " class="a1"><i class='bx bx-list-plus'></i> Ajouter </a>
+                  <a href=" {% url "update_convention" '0' %} "  class="a2"><i class='bx bx-show-alt'></i> Consulter</a>
+                </div>
+              </div>
+
+              <div class="droppdown2 sous-menu">
+                <li class="dropbtn2">
+                 -  Avenant
+                </li>
+                <div class="dropdownav-content ">
+                  <a href=" {% url "avenant_create" %} "  class="a3"><i class='bx bx-list-plus'></i> Ajouter </a>
+                  <a href=" {% url "update_avenant" '0' %} "  class="a4"><i class='bx bx-show-alt'></i> Consulter</a>
+                </div>
+              </div>
+
+              <div class="droppdown3 sous-menu">
+                <li class="dropbtn3">
+                  -  Lettre accord
+                </li>
+                <div class="dropdownla-content">
+                  <a href=" {% url "lettreAccord_create" %} "  class="a5"><i class='bx bx-list-plus'></i> Ajouter </a>
+                  <a href=" {% url "update_lettreAccord" '0' %} "  class="a6"><i class='bx bx-show-alt'></i> Consulter</a>
+                </div>
+              </div>
+
+              <div class="droppdown4 sous-menu">
+                <li class="dropbtn4">
+                  -  Accord
+                </li>
+                <div class="dropdownac-content">
+                  <a href=" {% url "accord_create" %} "  class="a7"><i class='bx bx-list-plus'></i> Ajouter </a>
+                  <a href=" {% url "update_accord" '0' %} "  class="a8"><i class='bx bx-show-alt'></i> Consulter</a>
+                </div>
+              </div>
+
+              <div class="droppdown5 sous-menu">
+                <li class=" dropbtn5">
+                  -  Accord d'operation
+                </li>
+                <div class="dropdownaop-content">
+                  <a href=" {% url "accordOperation_create" %} "  class="a9"><i class='bx bx-list-plus'></i> Ajouter </a>
+                  <a href=" {% url "update_accordOp" '0' %} "  class="a10"><i class='bx bx-show-alt'></i> Consulter</a>
+                </div>
+              </div>
+              
+            </ul>
+          </div>
+       
+
+            <div class="droppdown">
+              <li class="nav-link dropbtn ">
+                <a>
+                  <i class="fa fa-balance-scale icon" aria-hidden="true"></i>
+                  <span class="text nav-text">Avis juridique</span>
+                </a>
+              </li>
+              <div class="dropdownaj-content">
+                <a href=" {% url "avisJuridique_create" %} "class='aaj'><i class='bx bx-list-plus'></i> Ajouter </a>
+                <a href=" {% url "update_avis" '0' %} " class='caj'><i class='bx bx-show-alt'></i> Consulter</a>
+              </div>
+            </div>
+
+
+            <div class="droppdown">
+              <li class="nav-link dropbtn ">
+                <a>
+                  <i class='bx bx-pencil icon'></i>
+                  <span class="text nav-text">Point de situation</span>
+                </a>
+              </li>
+              <div class="dropdownpds-content">
+                <a href=" {% url "pds_create" %} " class='apds'><i class='bx bx-list-plus'></i> Ajouter </a>
+                <a href=" {% url "update_pds" '0' %} " class='cpds'><i class='bx bx-show-alt'></i> Consulter</a>
+              </div>
+            </div>
+            <li class="nav-link navlink2">
+              <a href="{% url 'dashboard' %}">
+                <i class="fa fa-tachometer icon" aria-hidden="true"></i>
+                <span class="text nav-text">Dashboard</span>
+              </a>
+            </li>
+            
+        
+        </div>
+      </div>
+    </nav>
+        <section class="home">
+          <li class="link2 hide">Soit transmis</li>
+          <li class="link3 hide">Contrats</li>
+          <li class="link4 hide">Documents contractuels</li>
+          <li class="link5 hide">Avis juridique</li>
+          <li class="link6 hide">Points de situations</li>
+          <li class="link7 hide">Dashboard</li>
+          <li class="link8 hide">Historique</li>
+      <li class="slink1 hide">Convention de détachement</li>
+      <li class="slink2 hide">Avenant</li>
+      <li class="slink3 hide">Lettre accord</li>
+      <li class="slink4 hide">Accord</li>
+      <li class="slink5 hide">Accord d'opérations</li>
+     <header>
+      <h1>  <i class="fa fa-balance-scale" aria-hidden="true"></i> Gestion des contrats d'associations</h1>
+      <span class="nomprenom"><i class='bx bxs-user-circle '></i> {{ request.user.first_name }} {{ request.user.last_name }} <i class='bx bxs-down-arrow ' ></i></span>
+</header>
+    <ul class="sous-header masquer">
+      <li><a href=" {% url "logoutUser" %} "><i class='bx bx-log-out'></i>Deconnexion</li></a>
+      <li><a href="{% url "password_change" %}"><i class="fa fa-cog" aria-hidden="true"></i>Paramètres</li></a>
+    </ul>
+    <div class="container">
+      <h3>Contrat</h3>
+      <div class="header">
+        <a href="{% url 'chefdep' %}"> <i class='bx bx-home-alt icon'></i></a> / Contrat / <a href="{% url "contrat_create" %}">Nouveau contrat</a>    </div>
+         <div class="entete">
+          <li><a href="{% url "update_contrat" '0' %}">Consulter</a></li>
+         </div> 
+         <h3 style="color:#035096; position:relative; font-family:poppins;top: 22px ; margin-bottom: 0;"> Nouveau partenaire <i class='bx bxs-plus-circle'></i></h3>
+         <form method="POST" enctype="multipart/form-data" class="half1 hide">
+          {% csrf_token %}
+          <h2>Partenaire</h2>
+          <label for="nom">Nom du partenaire</label>
+          {% if error4 == ""%}
+          <input name="nom_partenaire" maxlength="20" type="text" id="nom"  required>
+         {% else %}
+         <input name="nom_partenaire" style="border:3px solid red;" value ="{{form.nom_parteanaire.value}}" maxlength="20" type="text" id="nom"  required>
+          <input type="text" style="border:3px solid red;" value ="{{form.titre_pds.value}}" name="titre_pds" id="title" required> 
+          <span class="error">{{error4}}</span>
+         {% endif %}
+          <label for="pays">Pays d'origine</label>
+          <select name="pays" required>
+            <option selected>---------</option>
+            <option value="AFG">Afghanistan</option>
+            <option value="ALA">Åland Islands</option>
+            <option value="ALB">Albanie</option>
+            <option value="DZA">Algérie</option>
+            <option value="ASM">Samoa</option>
+            <option value="AND">Andorre</option>
+            <option value="AGO">Angola</option>
+            <option value="AIA">Anguilla</option>
+            <option value="ATA">Antarctique</option>
+            <option value="ATG">Antigua et Barbuda</option>
+            <option value="ARG">Argentine</option>
+            <option value="ARM">Arménie</option>
+            <option value="ABW">Aruba</option>
+            <option value="AUS">Australie</option>
+            <option value="AUT">Autriche</option>
+            <option value="AZE">Azerbaïdjan</option>
+            <option value="BHS">Bahamas</option>
+            <option value="BHR">Bahrain</option>
+            <option value="BGD">Bangladesh</option>
+            <option value="BRB">Barbade</option>
+            <option value="BLR">Belarus</option>
+            <option value="BEL">Belgique</option>
+            <option value="BLZ">Belize</option>
+            <option value="BEN">Bénin</option>
+            <option value="BMU">Bermuda</option>
+            <option value="BTN">Bhutan</option>
+            <option value="BOL">Bolivie</option>
+            <option value="BES">Bonaire, Saint-Eustache et Saba</option>
+            <option value="BIH">Bosnie-Herzégovine</option>
+            <option value="BWA">Botswana</option>
+            <option value="BVT">Île Bouvet</option>
+            <option value="BRA">Brésil</option>
+            <option value="IOT">Territoire britannique de l'océan Indien</option>
+            <option value="BRN">Brunéi Darussalam</option>
+            <option value="BGR">Bulgarie</option>
+            <option value="BFA">Burkina Faso</option>
+            <option value="BDI">Burundi</option>
+            <option value="KHM">Cambodge</option>
+            <option value="CMR">Cameroun</option>
+            <option value="CAN">Canada</option>
+            <option value="CPV">Cap-Vert</option>
+            <option value="CYM">Îles Caïmans</option>
+            <option value="CAF">République centrafricaine</option>
+            <option value="TCD">Tchad</option>
+            <option value="CHL">Chili</option>
+            <option value="CHN">Chine</option>
+            <option value="CXR">Île Christmas</option>
+            <option value="CCK">Îles Cocos (Keeling)</option>
+            <option value="COL">Colombie</option>
+            <option value="COM">Comores</option>
+            <option value="COG">Congo</option>
+            <option value="COD">Congo, République démocratique du Congo</option>
+            <option value="COK">Îles Cook</option>
+            <option value="CRI">Costa Rica</option>
+            <option value="CIV">Côte d'Ivoire</option>
+            <option value="HRV">Croatie</option>
+            <option value="CUB">Cuba</option>
+            <option value="CUW">Curaçao</option>
+            <option value="CYP">Chypre</option>
+            <option value="CZE">République tchèque</option>
+            <option value="DNK">Danemark</option>
+            <option value="DJI">Djibouti</option>
+            <option value="DMA">Dominique</option>
+            <option value="DOM">République dominicaine</option>
+            <option value="ECU">Équateur</option>
+            <option value="EGY">Égypte</option>
+            <option value="SLV">El Salvador</option>
+            <option value="GNQ">Guinée équatoriale</option>
+            <option value="ERI">Érythrée</option>
+            <option value="EST">Estonie</option>
+            <option value="ETH">Éthiopie</option>
+            <option value="FLK">Îles Falkland (Malvinas)</option>
+            <option value="FRO">Îles Féroé</option>
+            <option value="FJI">Fidji</option>
+            <option value="FIN">Finlande</option>
+            <option value="FRA">France</option>
+            <option value="GUF">Guyane française</option>
+            <option value="PYF">Polynésie française</option>
+            <option value="ATF">Terres australes françaises</option>
+            <option value="GAB">Gabon</option>
+            <option value="GMB">Gambie</option>
+            <option value="GEO">Géorgie</option>
+            <option value="DEU">Allemagne</option>
+            <option value="GHA">Ghana</option>
+            <option value="GIB">Gibraltar</option>
+            <option value="GRC">Grèce</option>
+            <option value="GRL">Groenland</option>
+            <option value="GRD">Grenade</option>
+            <option value="GLP">Guadeloupe</option>
+            <option value="GUM">Guam</option>
+            <option value="GTM">Guatemala</option>
+            <option value="GGY">Guernesey</option>
+            <option value="GIN">Guinée</option>
+            <option value="GNB">Guinée-Bissau</option>
+            <option value="GUY">Guyane</option>
+            <option value="HTI">Haïti</option>
+            <option value="HMD">Île Heard et îles McDonald</option>
+            <option value="VAT">Saint-Siège (État de la Cité du Vatican)</option>
+            <option value="HND">Honduras</option>
+            <option value="HKG">Hong Kong</option>
+            <option value="HUN">Hongrie</option>
+            <option value="ISL">Islande</option>
+            <option value="IND">Inde</option>
+            <option value="IDN">Indonésie</option>
+            <option value="IRN">Iran, République islamique d Iran'</option>
+            <option value="IRQ">Irak</option>
+            <option value="IRL">Irlande</option>
+            <option value="IMN">Île de Man</option>
+            <option value="ISR">Israël</option>
+            <option value="ITA">Italie</option>
+            <option value="JAM">Jamaïque</option>
+            <option value="JPN">Japon</option>
+            <option value="JEY">Jersey</option>
+            <option value="JOR">Jordanie</option>
+            <option value="KAZ">Kazakhstan</option>
+            <option value="KEN">Kenya</option>
+            <option value="KIR">Kiribati</option>
+            <option value="PRK">Corée, République populaire démocratique de Corée</option>
+            <option value="KOR">Corée, République de Corée</option>
+            <option value="KWT">Koweït</option>
+            <option value="KGZ">Kirghizistan</option>
+            <option value="LAO">République démocratique populaire lao</option>
+            <option value="LVA">Lettonie</option>
+            <option value="LBN">Liban</option>
+            <option value="LSO">Lesotho</option>
+            <option value="LBR">Liberia</option>
+            <option value="LBY">Libye</option>
+            <option value="LIE">Liechtenstein</option>
+            <option value="LTU">Lituanie</option>
+            <option value="LUX">Luxembourg</option>
+            <option value="MAC">Macao</option>
+            <option value="MKD">Macédoine, ancienne République de Yougoslavie</option>
+            <option value="MDG">Madagascar</option>
+            <option value="MWI">Malawi</option>
+            <option value="MYS">Malaisie</option>
+            <option value="MDV">Maldives</option>
+            <option value="MLI">Mali</option>
+            <option value="MLT">Malte</option>
+            <option value="MHL">Îles Marshall</option>
+            <option value="MTQ">Martinique</option>
+            <option value="MRT">Mauritanie</option>
+            <option value="MUS">Maurice</option>
+            <option value="MYT">Mayotte</option>
+            <option value="MEX">Mexique</option>
+            <option value="FSM">Micronésie, États fédérés de Micronésie</option>
+            <option value="MDA">Moldavie, République de Moldavie</option>
+            <option value="MCO">Monaco</option>
+            <option value="MNG">Mongolie</option>
+            <option value="MNE">Monténégro</option>
+            <option value="MSR">Montserrat</option>
+            <option value="MAR">Maroc</option>
+            <option value="MOZ">Mozambique</option>
+            <option value="MMR">Myanmar</option>
+            <option value="NAM">Namibie</option>
+            <option value="NRU">Nauru</option>
+            <option value="NPL">Népal</option>
+            <option value="NLD">Pays-Bas</option>
+            <option value="NCL">Nouvelle-Calédonie</option>
+            <option value="NZL">Nouvelle-Zélande</option>
+            <option value="NIC">Nicaragua</option>
+            <option value="NER">Niger</option>
+            <option value="NGA">Nigéria</option>
+            <option value="NIU">Niue</option>
+            <option value="NFK">Île Norfolk</option>
+            <option value="MNP">Îles Mariannes du Nord</option>
+            <option value="NOR">Norvège</option>
+            <option value="OMN">Oman</option>
+            <option value="PAK">Pakistan</option>
+            <option value="PLW">Palau</option>
+            <option value="PSE">Territoire palestinien occupé</option>
+            <option value="PAN">Panama</option>
+            <option value="PNG">Papouasie-Nouvelle-Guinée</option>
+            <option value="PRY">Paraguay</option>
+            <option value="PER">Pérou</option>
+            <option value="PHL">Philippines</option>
+            <option value="PCN">Pitcairn</option>
+            <option value="POL">Pologne</option>
+            <option value="PRT">Portugal</option>
+            <option value="PRI">Porto Rico</option>
+            <option value="QAT">Qatar</option>
+            <option value="REU">Réunion</option>
+            <option value="ROU">Roumanie</option>
+            <option value="RUS">Fédération de Russie</option>
+            <option value="RWA">Rwanda</option>
+            <option value="BLM">Saint Barthélemy</option>
+            <option value="SHN">Sainte-Hélène, Ascension et Tristan da Cunha</option>
+            <option value="KNA">Saint-Kitts-et-Nevis</option>
+            <option value="LCA">Sainte-Lucie</option>
+            <option value="MAF">Saint-Martin (partie française)</option>
+            <option value="SPM">Saint-Pierre-et-Miquelon</option>
+            <option value="VCT">Saint-Vincent-et-les Grenadines</option>
+            <option value="WSM">Samoa</option>
+            <option value="SMR">Saint-Marin</option>
+            <option value="STP">Sao Tomé-et-Principe</option>
+            <option value="SAU">Arabie saoudite</option>
+            <option value="SEN">Sénégal</option>
+            <option value="SRB">Serbie</option>
+            <option value="SYC">Seychelles</option>
+            <option value="SLE">Sierra Leone</option>
+            <option value="SGP">Singapour</option>
+            <option value="SXM">Sint Maarten (partie néerlandaise)</option>
+            <option value="SVK">Slovaquie</option>
+            <option value="SVN">Slovénie</option>
+            <option value="SLB">Îles Salomon</option>
+            <option value="SOM">Somalie</option>
+            <option value="ZAF">Afrique du Sud</option>
+            <option value="SGS">Géorgie du Sud et îles Sandwich du Sud</option>
+            <option value="SSD">Soudan du Sud</option>
+            <option value="ESP">Espagne</option>
+            <option value="LKA">Sri Lanka</option>
+            <option value="SDN">Soudan</option>
+            <option value="SUR">Suriname</option>
+            <option value="SJM">Svalbard et Jan Mayen</option>
+            <option value="SWZ">Swaziland</option>
+            <option value="SWE">Suède</option>
+            <option value="CHE">Suisse</option>
+            <option value="SYR">République arabe syrienne</option>
+            <option value="TWN">Taïwan, province de Chine</option>
+            <option value="TJK">Tadjikistan</option>
+            <option value="TZA">Tanzanie, République-Unie de Tanzanie</option>
+            <option value="THA">Thaïlande</option>
+            <option value="TLS">Timor-Leste</option>
+            <option value="TGO">Togo</option>
+            <option value="TKL">Tokelau</option>
+            <option value="TON">Tonga</option>
+            <option value="TTO">Trinité-et-Tobago</option>
+            <option value="TUN">Tunisie</option>
+            <option value="TUR">Turquie</option>
+            <option value="TKM">Turkménistan</option>
+            <option value="TCA">Îles Turques et Caïques</option>
+            <option value="TUV">Tuvalu</option>
+            <option value="UGA">Ouganda</option>
+            <option value="UKR">Ukraine</option>
+            <option value="ARE">Émirats arabes unis</option>
+            <option value="GBR">Royaume-Uni</option>
+            <option value="USA">États-Unis</option>
+            <option value="UMI">Îles mineures éloignées des États-Unis</option>
+            <option value="URY">Uruguay</option>
+            <option value="UZB">Ouzbékistan</option>
+            <option value="VUT">Vanuatu</option>
+            <option value="VEN">Venezuela, République bolivarienne</option>
+            <option value="VNM">Viet Nam</option>
+            <option value="VGB">Îles Vierges britanniques</option>
+            <option value="VIR">Îles Vierges américaines.</option>
+            <option value="WLF">Wallis et Futuna</option>
+            <option value="ESH">Sahara occidental</option>
+            <option value="YEM">Yémen</option>
+            <option value="ZMB">Zambie</option>
+            <option value="ZWE">Zimbabwe</option>
+            </select>
+          <input type="hidden" name="partenaire" value="True" id="id_partenaire">
+          <div class="boutton">
+            <input type="submit" value="Valider">
+          </div>
+        </form>
+         <div class="form formcontrat" style="position:relative;top:-20px">
+      <form method="POST" enctype="multipart/form-data" id="ajouterdc" class='uniquecontrat'>
+        {% csrf_token %}
+        <h2> Contrat</h2>
+        <div class="containerform accordop formcontrat">
+        <div class="left">
+          <div class="label leftlabel">
+            <label for="title">Titre du contrat</label> 
+            <label for="loi">Signé selon la loi</label> 
+            <label for="num">Numéro du décret</label>
+            <label for="datede">Date du décret</label> 
+            <label for="finsh">Financement Sonatrach</label>
+            <label for="phase">Phase</label>
+            <label for="op">Nom de l'opérateur</label>
+            <label for="pe">Nom du perimetre</label>
+          </div>
+           <div class="input leftinput"> 
+            {% if error == ""%}
+            <input type="text"  maxlength="200" name="titre_contrat" id="title" required> 
+           {% else %}
+            <input type="text" maxlength="200" style="border:3px solid red;" value ="{{form_contrat.titre_contrat.value}}" name="titre" id="title" required> 
+            <span class="error">{{error}}</span>
+           {% endif %}
+
+           {% if error1 != "" or error2 != "" or error != "" %}
+           <select name="loi">
+            <option selected="selected">{{ form_contrat.loi.value }}</option>
+            {% for choice in form_contrat.loi.field.choices %}
+                <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+            {% endfor %}
+          </select>
+           {% else %}
+           <select name="loi">
+            {% for choice in form_contrat.loi.field.choices %}
+                <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+            {% endfor %}
+          </select>
+           {% endif %}
+            
+            <input name="num_decret" type="number" id="num" value ="num" required maxlength="10"> 
+            <input name="date_decret" type="date" id="datede" value ="{{form_contrat.date_decret.value}}"required>
+            <input name="financement_SH" type="number"  id="finsh" value="fin" required min="51" max="99"> <br>
+
+            {% if error1 != "" or error2 != "" or error != "" %}
+            <select name="phase_contrat">
+              <option selected="selected" value="{{ form_contrat.phase_contrat.value }}">{{ form_contrat.phase_contrat.value }}</option>
+             {% for choice in form_contrat.phase_contrat.field.choices %}
+                 <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+             {% endfor %}
+            </select> <br>
+           {% else %}
+           <select name="phase_contrat">
+           {% for choice in form_contrat.phase_contrat.field.choices %}
+               <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+           {% endfor %}
+          </select> <br>
+           {% endif %}
+
+            {% if error1 == ""%}
+            <input name="nom_op" type="text" id="op" required maxlength="20"> <br>
+           {% else %}
+           <input name="nom_op" style="border:3px solid red;" type="text" id="op" value ="{{form_contrat.nom_op.value}}" required maxlength="20"> <br>
+            <span class="error">{{error1}}</span>
+           {% endif %}
+            
+            {% if error2 == ""%}
+            <input name="nom_perimetre" type="text"  maxlength="20" id="pe" required> <br>
+    
+           {% else %}
+            
+           <input name="nom_perimetre" style="border:3px solid red;" type="text" value ="{{form_contrat.nom_perimetre.value}}"  maxlength="20" id="pe" required> <br>
+            <span class="error">{{error2}}</span>
+           {% endif %}
+          </div>
+         </div>
+
+        <div class="right">
+          <div class="label rightlabel">
+           
+            <label for="dates">Date de signature </label>
+            <label for="datedeb">Date de début du contrat</label>
+            <label for="datess">Date  de fin  de la recherche </label>
+            <label for="datepod">Date d'approbation du pod</label>
+            <label for="datesss">Date de  debut de  l'exploitation </label>
+            <label for="datefin">Date de fin du contrat</label>
+            <label for="pdf">Document</label>
+          </div>
+          <div class="input rightinput"><br> 
+            <input name="date_signature_contrat" type="date" id="dates"  value ="{{form_contrat.date_signature_contrat.value}}"required> 
+            <div class='erreur erreurdec'>La date du décret doit être antérieure à la date de signature</div>
+            <input name="date_debut_contrat" type="date" id="datedeb" value ="{{form_contrat.date_debut_contrat.value}}" required>
+            <div class='erreur erreurdeb'>La date de signature  doit être antérieure à la date de début</div>
+            <input name="date_fin_recherche" type="date" id="datess" value ="{{form_contrat.date_fin_recherche.value}}" required> 
+            <div class='erreur erreurrech'>La date de signature doit être antérieure à la date de fin de la recherche</div>
+            <input name="date_approbation_pod" type="date" id="datepod" required value ="{{form_contrat.approbation_pod.value}}">
+            <div class='erreur erreurpod'>La date d'approbation du pod doit être superieure à la date de fin de la recherche</div>
+            <input name="date_debut_exploitation" type="date" id="datesss" value ="{{form_contrat.date_debut_exploitation.value}}" required> 
+            <div class='erreur erreurexp'>La date de fin de la recherche  doit être antérieure à la date de debut de l'exploitation'</div>
+            <input name="date_fin_contrat" type="date" id="datefin" value ="{{form_contrat.date_fin_contrat.value}}"required> 
+            <div class='erreur erreurfin'>La date de fin du contrat doit être supérieure à la date de debut de l'exploitation'</div>
+            <input name="contrat_pdf" type="file" id="pdf" required> <br>
+            <input type="hidden" name="contrath" value="True" id="id_contrath">
+          </div>
+         
+        </div>
+      </div>
+      <div class="boutton">
+        <input type="submit" value="Valider" class='submit2'>
+      </div>
+      </form>
+    </div>
+
+    
+    
+    <div class=" financement">
+     
+      <form method="POST" enctype="multipart/form-data" class="half2" style="height:450px">
+        {% csrf_token %}
+        <h2>Financement contrat</h2>
+        {% if error3 != ""%}
+        <span class="error">{{error3}}</span>
+        <script>
+          Swal.fire({
+            icon:'error',
+            title: 'Erreur !',
+            text: "{{error3}}",
+            confirmButtonText: 'OK',
+            confirmButtonColor:'blue',})
+        </script>
+       {% endif %}
+        <label for="id">Contrat associé </label> <br>
+
+        {% if error1 != "" or error2 != "" or error != "" %}
+        <select name="contrat">
+          <option selected="selected" value="{{ form_fdup.contrat.value }}">{{ form_fdup.contrat.value }}</option>
+          {% for choice in form_fdup.contrat.field.choices %}
+              <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+          {% endfor %}
+        </select>  <br>
+        {% else %}
+        <select name="contrat">
+          {% for choice in form_fdup.contrat.field.choices %}
+              <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+          {% endfor %}
+        </select>  <br>
+        {% endif %}
+
+        
+        <label for="nom">Partenaire</label><br>
+
+        {% if error1 != "" or error2 != "" or error != "" %}
+        <select name="partenaire">
+          <option selected="selected" value="{{ form_fdup.partenaire.value }}">{{ form_fdup.partenaire.value }}</option>
+          {% for choice in form_fdup.partenaire.field.choices %}
+              <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+          {% endfor %}
+        </select> <br>
+        {% else %}
+        <select name="partenaire">
+          {% for choice in form_fdup.partenaire.field.choices %}
+              <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+          {% endfor %}
+        </select> <br>
+        {% endif %}
+
+        
+        <label for="pr">Pourcentage de Financement</label> <br>
+        <input name="pourcentage_fin" type="number" id="pr" min="1" max="49" required > <br>
+        <br>
+        <input type="hidden" name="fdup" value="True" id="id_fdup">
+        <div class="boutton" style="top:-55px;position:relative">
+          <center>          <input type="submit" value="Valider"> </center>
+
+        </div>
+      </form>
+    </div>
+
+    </div>
+ 
+    </section>
+
+
+
+
+
+</body>
+</html>
+
+
+<script>
+  var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth() + 1; //January is 0!
+var yyyy = today.getFullYear();
+var datede =document.getElementById('datede');
+var datedes =document.getElementById('dates');
+var datedeb =document.getElementById('datedeb');
+var datepod=document.getElementById('datepod');
+var datefinrech =document.getElementById('datess');
+var datedebexp =document.getElementById('datesss');
+var datefin=document.getElementById('datefin');
+
+var formcontrat = document.querySelector(".uniquecontrat")
+
+var erreurdec = document.querySelector('.erreurdec')
+var erreurdeb = document.querySelector('.erreurdeb')
+var erreurpod= document.querySelector('.erreurpod')
+var erreurrech = document.querySelector('.erreurrech')
+var erreurexp = document.querySelector('.erreurexp')
+var erreurfin = document.querySelector('.erreurfin')
+
+if (dd < 10) {
+  dd = '0' + dd
+}
+
+if (mm < 10) {
+  mm = '0' + mm
+}
+
+today = yyyy + '-' + mm + '-' + dd;
+
+window.addEventListener('load',function(){
+datede.setAttribute("max", today);
+datedes.setAttribute("max", today);
+datepod.setAttribute("min", today);
+datefinrech.setAttribute("min", today);
+datedebexp.setAttribute("min", today);
+datedebexp.setAttribute("min", today);
+datefin.setAttribute("min", today);
+})
+
+
+/*-------------------------------*/
+var half1=document.querySelector('.half1')
+  var plus= document.querySelector('.bxs-plus-circle')
+  plus.addEventListener('click', function(){
+    half1.classList.toggle('hide')
+  }
+  )
+
+/*-----------------------------------------*/
+formcontrat.addEventListener('submit', function (e){
+                //Si le champ est vide
+                if (datede.value > datedes.value){
+                     e.preventDefault()
+                     erreurdec.style.visibility='visible'
+                     erreurdec.style.width='auto'
+                     erreurdec.style.height='auto'
+                     datede.style.border='3px solid red'
+                     datedes.style.border='3px solid red'
+            }
+            if (datedes.value > datedeb.value){
+                     e.preventDefault()
+                     erreurdeb.style.visibility='visible'
+                     erreurdeb.style.width='auto'
+                     erreurdeb.style.height='auto'
+                     datedeb.style.border='3px solid red'
+                     datedes.style.border='3px solid red'
+            }
+            if (datepod.value < datefinrech.value){
+                     e.preventDefault()
+                     erreurpod.style.visibility='visible'
+                     erreurpod.style.width='auto'
+                     erreurpod.style.height='auto'
+                     datefinrech.style.border='3px solid red'
+                     datepod.style.border='3px solid red'
+            }
+            if (datedeb.value > datefinrech.value){
+                     e.preventDefault()
+                     erreurrech.style.visibility='visible'
+                     erreurrech.style.width='auto'
+                     erreurrech.style.height='auto'
+                     datefinrech.style.border='3px solid red'
+                     dateded.style.border='3px solid red'
+            }
+            if (datedebexp.value < datefinrech.value){
+                     e.preventDefault()
+                     erreurexp.style.visibility='visible'
+                     erreurexp.style.width='auto'
+                     erreurexp.style.height='auto'
+                     datefinrech.style.border='3px solid red'
+                     datedebexp.style.border='3px solid red'
+            }
+
+            if (datedebexp.value > datefin.value){
+                     e.preventDefault()
+                     erreurfin.style.visibility='visible'
+                     erreurfin.style.width='auto'
+                     erreurfin.style.height='auto'
+                     datefin.style.border='3px solid red'
+                     datedebexp.style.border='3px solid red'
+            }
+          }
+)
+</script>
+<!-- partial -->
+<script  src={% static "js/script.js" %}></script>
+<script  src={% static "js/media.js" %}></script>

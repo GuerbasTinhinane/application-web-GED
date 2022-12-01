@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Poppins&family=Public+Sans&family=Roboto&display=swap');
+
+
+/*--- le blanc ---*/
+h3{font-family: 'roboto'; margin-left: 65px; font-size: 25px; margin-bottom: 20px;}
+.header{
+min-width:400px; 
+background-color: #fff; 
+margin:0 60px; 
+font-size: 14px;
+padding: 5px 10px;
+color:#035096;
+font-family: 'nunito';
+margin-bottom: 30px;}
+.header a {
+text-decoration: none; 
+color:#035096;}
+.header a:nth-child(2){
+color:#707070; 
+font-size: 13px;}
+
+/*le orange*/
+.entete{
+    margin: 0 30px;
+    font-family:'Nunito',arial;
+    list-style: none;
+    display: flex;
+    position: relative;
+    justify-content:space-between;
+    min-width:500px;
+    background-color:#ff8c00;
+    }
+.entete li{border:1px solid #fff; width:100%;text-align: center; } 
+.entete li a 
+{text-decoration: none;
+color:#fff;
+}
+.entete li:hover 
+{background-color: #ffb347;}
+form h2 {color:#696969;
+    font-family: 'Poppins';
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #dcdcdc;
+    }
+
+.container{
+width:100%;
+margin:20px 0;
+position: absolute;
+top:80px;}
+
+/*----dropdown afficher colonnes----*/
+.columntitle {
+margin-left: 1%;
+background-color: #fff;
+width:12%;
+position: relative;
+top:5px;
+margin-bottom: 20px;
+text-align: center;
+font-size: 13px;
+font-weight: 500;
+font-family: 'poppins';
+padding: 5px 5px;
+color: #ff8c00;
+box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+}
+.column{
+position: absolute;
+font-size: 11px;
+z-index: 5;
+margin-bottom: 5px;
+margin-left: 10px;
+color:#707070;
+display: flex;
+flex-direction:column;
+width:11%;
+background-color:#fff;
+align-content: center;
+justify-content: center;
+box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
+}
+
+.icone2{
+font-size: 18px;
+position: relative;
+top:3px;
+}
+
+
+
+.column a {
+    cursor: pointer;
+    margin: 3px 0 3px 20%;
+}
+.blue{color:#1974d2;
+}
+.grey{color:#d3d3d3;}
+.blue::before{color:#1974d2;
+    content:">"}
+
+
+/* tableau */
+.containertable {width:90%;
+    margin:0 auto;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding: 15px;
+        font-size: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.containertable table {
+    padding :10px;
+}
+    
+input{
+border: 2px solid #fff;
+border-bottom: 2px solid #ddd;
+border-radius: 5px;
+padding-left: 15px;
+margin: 10px 20px 0 0;
+}
+input:focus {
+outline: none;
+border-bottom-color:#000066;
+}
+
+.petit{font-size: 10px;}
+
+
+tfoot th:last-child input, tfoot th:nth-last-child(2) input{width:0; height:0; border-color: #fff;}
+
+h5{
+    margin:55px 0 0px 70px;
+    font-family: 'Poppins';
+font-size: 20px;
+float:right;
+}
+h5 i {font-size: 30px;
+    position: relative;
+    top:5px;
+}
+h5 a {text-decoration: none;
+    color:#035096;
+}
+
+h5 a:hover {
+    color:#1974d2
+}
+@media screen and (max-width:1400px)
+{ 
+    .columntitle{width:120px; font-size: 11px;}
+}
+
+@media screen and (max-width:1000px)
+{ h3{font-size: 25px;}
+}

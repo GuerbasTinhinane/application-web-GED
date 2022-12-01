@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  {% load i18n %}
+  <meta charset="UTF-8">
+  <title>Paramètres</title>
+  <script src="jquery-3.5.1.js"></script>
+  {% load static %}
+  <link rel="stylesheet" href={% static "css/style.css" %}>
+  <link rel="stylesheet" href={% static "css/ajouter.css" %}>
+  <link rel="stylesheet" href={% static "css/chefdep.css" %}>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+   
+  <link rel="icon" type="image/png"  href={% static 'images/logo.png' %}>
+  <!-- data table links -->
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> <!-- ????-->
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+ 
+ 
+
+  <!-- search column-->
+  <script src="https:../../media/js/jquery.js"></script>
+  <script src="https:../../media/js/jquery.dataTables.js"></script>
+
+
+<!--- export files -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.css"/>
+ 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
+
+<!-- toggle columns-->
+<script src="http:../../media/js/jquery.js"></script>
+<script src="http:../../media/js/jquery.dataTables.js"></script>
+<link rel="stylesheet" href="http:../../media/css/jquery.dataTables.css">
+
+
+<link rel="stylesheet" href={% static "css/designtable.css" %}>
+<script>
+   $(document).ready(function() {
+        var table = $('#example').DataTable( {
+          "bPaginate": false,
+          language: {
+        searchPlaceholder: "Rechercher dans l'historique"
+    },
+          /*export files*/ 
+          "columnDefs": [ 
+        
+            {
+                "targets": [0],
+                'orderable': false,
+            },
+            
+            {
+                "targets": [1],
+                'orderable': false,
+            },
+            
+            {
+                "targets": [2],
+                'orderable': true,
+                'type': 'date-euro',
+            }
+            ,
+            
+            {
+                "targets": [3],
+                'orderable': false,
+            }
+            
+            
+        ],
+        order: [[2, 'desc']],
+            dom: 'Blfrtip',
+            lengthMenu: [
+                [ 10, 25, 50, 100 ],
+                [ '10', '25', '50', '100' ]
+                ],
+              buttons:[
+           "copy", 'pdf', 'excel','print'
+          ],
+        "oLanguage": {
+          "sSearch": "Rechercher" //search
+        },
+        "language": { "lengthMenu": "Afficher _MENU_", 
+         "zeroRecords": "Aucun enregistrement trouvé", 
+         "info": " ", 
+         "paginate": {
+            "previous": "<<",
+            "next": ">>"  },
+         "infoEmpty": " ",
+         "infoFiltered": "" 
+        }   
+      } );
+      /*
+      .dataTables_wrapper .dataTables_info {visibility:hidden}*/   
+      $('.buttons-excel span').html("<i class='fa fa-file-excel-o' aria-hidden='true'></i> <br> <span class='petit'>Excel</span>")
+      $('.buttons-print span').html("<i class='fa fa-print' aria-hidden='true'></i>  <br> <span class='petit'>Editer</span>")
+      $('.buttons-copy span').html("<i class='fa fa-clone' aria-hidden='true'></i>  <br> <span class='petit'>Copier</span>")
+      $('.buttons-pdf span').html("<i class='fa fa-file-pdf-o' aria-hidden='true'></i>  <br> <span class='petit'>Pdf</span>")
+        
+      
+
+        // DataTable
+        var table = $('#example').DataTable();
+     
+        // Apply the filter
+        table.columns().eq( 0 ).each( function ( colIdx ) {
+            $( 'input', table.column( colIdx ).footer() ).on( 'keyup change', function () {
+                table
+                    .column( colIdx )
+                    .search( this.value )
+                    .draw();
+            } );
+        } );
+    
+      /***** show hide columns ****/
+    
+        $('a.toggle-vis').on( 'click', function (e) {
+            e.preventDefault();
+            $(this).toggleClass( "blue" )
+            $(this).toggleClass( "grey" )
+            // Get the column API object
+            var column = table.column( $(this).attr('data-column') );
+     
+            // Toggle the visibility
+            column.visible( ! column.visible() );
+        } );
+    
+    
+    } );
+    
+    
+
+
+</script>
+
+<style>
+     input{width:50%;height:40px;}
+    label{width:50%; margin-left: 10%;}
+    input:first-of-type{margin-left: 10%;}
+    input:nth-of-type(2){margin-left: 8%;}
+    input:nth-of-type(3){margin-left: 5%;}
+    .boutton{ width:95%;}
+	.afficher{font-size:10px; width:auto; height:auto;  position:relative; left:-233px;top:-2px}
+	input[type="checkbox"]{with:13px;height:13px; position:relative; left:-88px; }
+  </style>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+  <body>
+    
+    <nav class="sidebar ">
+      <header>
+        <div class="image-text">
+          <span class="image">
+            {% if user.is_chefdep %}
+            <a href= "{% url 'chefdep' %}"> <img src={% static 'images/logo-removebg-preview.png' %} alt="logo"> </a>
+            {% else %}
+            <a href= "{% url 'juriste' %}"> <img src={% static 'images/logo-removebg-preview.png' %} alt="logo"> </a>
+            {% endif %}
+          </span>
+  
+  
+           <div class="text header-text">
+            <span class='name'> SONATRACH </span>
+          </div>
+          
+          
+        </div>
+        <i class='bx bx-menu toggle'></i>
+      </header>
+  
+      <div class="menu-bar">
+        <div class="menu">
+         
+          <ul class="menu-link">
+  
+           
+          
+  
+                <div class="droppdown">
+                  <li class="nav-link dropbtn ">
+                    <a href=" {% url "update_st" 0 %} " >
+                      <i class='bx bx-file icon'></i>
+                      <span class="text nav-text">Soit transmis</span>
+                    </a>
+                  </li>
+                  <div class="dropdownst-content">
+                    <a href=" {% url "st_create" %} "class='ast'><i class='bx bx-list-plus'></i> Ajouter </a>
+                    <a href=" {% url "update_st" 0 %} "class='cst'><i class='bx bx-show-alt'></i> Consulter</a>
+                  </div>
+                </div>
+              
+  
+                
+                <div class="droppdown">
+                  <li class="nav-link dropbtn ">
+                    <a href=" {% url "update_contrat" '0' %} " >
+                      <i class="fa fa-files-o icon" aria-hidden="true"></i>
+                      <span class="text nav-text">Contrats</span>
+                    </a>
+                  </li>
+                  <div class="dropdownct-content">
+                    <a href=" {% url "contrat_create" %} " class='act'><i class='bx bx-list-plus'></i> Ajouter </a>
+                    <a href=" {% url "update_contrat" '0' %} " class='cct'><i class='bx bx-show-alt'></i> Consulter</a>
+                  </div>
+                </div>
+               
+  
+            <li class="nav-link down">
+              <a > 
+                <i class='bx bx-folder-open icon'></i>
+                <span class="text nav-text">Documents <br> Contractuels <i class='bx bxs-chevron-down dropdown-btn'></i> </span>
+              </a>
+            </li>
+  
+            <div class="drop-down">
+            <ul class="dropdown-container hide ">
+             
+              <div class="droppdown1 sous-menu">
+                <li class="dropbtn1">
+                  <a href=" {% url "update_convention" '0' %} " >  -  Convention de <br> détachement</a>
+                </li>
+                <div class="dropdownconv-content">
+                  <a href=" {% url "convention_create" %} " class="a1"><i class='bx bx-list-plus'></i> Ajouter </a>
+                  <a href=" {% url "update_convention" '0' %} "  class="a2"><i class='bx bx-show-alt'></i> Consulter</a>
+                </div>
+              </div>
+  
+              <div class="droppdown2 sous-menu">
+                <li class="dropbtn2">
+                  <a href=" {% url "update_avenant" '0' %} "> -  Avenant</a>
+                </li>
+                <div class="dropdownav-content ">
+                  <a href=" {% url "avenant_create" %} "  class="a3"><i class='bx bx-list-plus'></i> Ajouter </a>
+                  <a href=" {% url "update_avenant" '0' %} "  class="a4"><i class='bx bx-show-alt'></i> Consulter</a>
+                </div>
+              </div>
+  
+              <div class="droppdown3 sous-menu">
+                <li class="dropbtn3">
+                  <a href=" {% url "update_lettreAccord" '0' %} " > -  Lettre accord</a>
+                </li>
+                <div class="dropdownla-content">
+                  <a href=" {% url "lettreAccord_create" %} "  class="a5"><i class='bx bx-list-plus'></i> Ajouter </a>
+                  <a href=" {% url "update_lettreAccord" '0' %} "  class="a6"><i class='bx bx-show-alt'></i> Consulter</a>
+                </div>
+              </div>
+  
+              <div class="droppdown4 sous-menu">
+                <li class="dropbtn4">
+                  <a href=" {% url "update_accord" '0' %} "> -  Accord</a>
+                </li>
+                <div class="dropdownac-content">
+                  <a href=" {% url "accord_create" %} "  class="a7"><i class='bx bx-list-plus'></i> Ajouter </a>
+                  <a href=" {% url "update_accord" '0' %} "  class="a8"><i class='bx bx-show-alt'></i> Consulter</a>
+                </div>
+              </div>
+  
+              <div class="droppdown5 sous-menu">
+                <li class=" dropbtn5">
+                  <a href=" {% url "update_accord" '0' %} ">-  Accord d'operation</a>
+                </li>
+                <div class="dropdownaop-content">
+                  <a href=" {% url "accordOperation_create" %} "  class="a9"><i class='bx bx-list-plus'></i> Ajouter </a>
+                  <a href=" {% url "update_accordOp" '0' %} "  class="a10"><i class='bx bx-show-alt'></i> Consulter</a>
+                </div>
+              </div>
+              
+            </ul>
+          </div>
+       
+  
+            <div class="droppdown">
+              <li class="nav-link dropbtn ">
+                <a href=" {% url "update_avis" '0' %} ">
+                  <i class="fa fa-balance-scale icon" aria-hidden="true"></i>
+                  <span class="text nav-text">Avis juridique</span>
+                </a>
+              </li>
+              <div class="dropdownaj-content">
+                <a href=" {% url "avisJuridique_create" %} "class='aaj'><i class='bx bx-list-plus'></i> Ajouter </a>
+                <a href=" {% url "update_avis" '0' %} " class='caj'><i class='bx bx-show-alt'></i> Consulter</a>
+              </div>
+            </div>
+  
+  
+            <div class="droppdown">
+              <li class="nav-link dropbtn ">
+                <a href=" {% url "update_pds" '0' %} ">
+                  <i class='bx bx-pencil icon'></i>
+                  <span class="text nav-text">Points de situations</span>
+                </a>
+              </li>
+              <div class="dropdownpds-content">
+                <a href=" {% url "pds_create" %} " class='apds'><i class='bx bx-list-plus'></i> Ajouter </a>
+                <a href=" {% url "update_pds" '0' %} " class='cpds'><i class='bx bx-show-alt'></i> Consulter</a>
+              </div>
+            </div>
+            <li class="nav-link navlink2">
+              <a href="{% url "dashboard" %}" >
+                <i class="fa fa-tachometer icon" aria-hidden="true"></i>
+                <span class="text nav-text">Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-link navlink2">
+              <a href="{% url "view_history" %}" >
+               <i class='bx bx-history icon'></i>
+                <span class="text nav-text">Historique</span>
+              </a>
+            </li>
+        
+        
+        </div>
+      </div>
+    </nav>
+        <section class="home">
+          <li class="link2 hide">Soit transmis</li>
+          <li class="link3 hide">Contrats</li>
+          <li class="link4 hide">Documents contractuels</li>
+          <li class="link5 hide">Avis juridique</li>
+          <li class="link6 hide">Points de situations</li>
+          <li class="link7 hide">Dashboard</li>
+          <li class="link8 hide">Historique</li>
+      <li class="slink1 hide">Convention de détachement</li>
+      <li class="slink2 hide">Avenant</li>
+      <li class="slink3 hide">Lettre accord</li>
+      <li class="slink4 hide">Accord</li>
+      <li class="slink5 hide">Accord d'opérations</li>
+     <header>
+      <h1>  <i class="fa fa-balance-scale" aria-hidden="true"></i> Gestion des contrats d'associations</h1>
+      <span class="nomprenom"><i class='bx bxs-user-circle '></i> {{ request.user.first_name }} {{ request.user.last_name }} <i class='bx bxs-down-arrow ' ></i></span>
+  </header>
+    <ul class="sous-header masquer">
+      <li><a href=" {% url "logoutUser" %} "><i class='bx bx-log-out'></i>Deconnexion</li></a>
+      <li><a href="{% url "password_reset" %}"><i class="fa fa-cog" aria-hidden="true"></i>Paramètres</li></a>
+    </ul>
+
+
+    
+<div class="container">
+  <h3>Modifier le mot de passe</h3>
+  <div class="header">
+    <a href='index.html'> <i class='bx bx-home-alt icon'></i></a>  / <a href="mdp.html">Paramètres</a>  </div>
+      
+ <div class="form" style="width:60%">
+  <form method="POST" id="ajouterdc">
+    {% csrf_token %}
+     <div>
+      <label for="exmdp"> Ancien mot de passe</label>
+      <input name="old_password"  type="password" class='mdp'  id="exmdp" required><br>
+      <label for="exmdp"> Nouveau mot de passe</label>
+      <input name="new_password1" type="password" class='mdp'  id="field_pwd1" title="Le mot de passe doit contenir au minimum 6 caractères ,une majuscule et un chiffre" type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="pwd1"> <br>
+      <label for="exmdp"> Confirmer le mot de passe</label>
+      <input  name="new_password2" class='mdp'  type="password" title="Les mots de passe saisis ne sont pas identiques" type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="pwd2">
+  <input type="checkbox" onclick="myFunction()"> 
+	  <span class='afficher'>  Afficher les mots de passe</span>
+  </div> 
+  <div class="boutton">
+    <input type="submit" value="Valider">
+  </div>
+  </form>
+</div>
+</div>
+    </section>
+
+
+    <script type="text/javascript">
+		
+	function myFunction() {
+  var x = document.querySelectorAll(".mdp");
+  for(var i=0; i<x.length;i++)
+  {
+  if (x[i].type === "password") {
+    x[i].type = "text";
+  } else {
+    x[i].type = "password";
+  }
+}
+}
+
+      document.addEventListener("DOMContentLoaded", function() {
+    
+        // JavaScript form validation
+    
+        var checkPassword = function(str)
+        {
+          var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+          return re.test(str);
+        };
+    
+        var checkForm = function(e)
+        {
+          if(this.username.value == "") {
+            alert("Error: Username cannot be blank!");
+            this.username.focus();
+            e.preventDefault(); // equivalent to return false
+            return;
+          }
+          re = /^\w+$/;
+          if(!re.test(this.username.value)) {
+            alert("Error: Username must contain only letters, numbers and underscores!");
+            this.username.focus();
+            e.preventDefault();
+            return;
+          }
+          if(this.pwd1.value != "" && this.pwd1.value == this.pwd2.value) {
+            if(!checkPassword(this.pwd1.value)) {
+              alert("The password you have entered is not valid!");
+              this.pwd1.focus();
+              e.preventDefault();
+              return;
+            }
+          } else {
+            alert("Error: Please check that you've entered and confirmed your password!");
+            this.pwd1.focus();
+            e.preventDefault();
+            return;
+          }
+          alert("Both username and password are VALID!");
+        };
+    
+        var myForm = document.getElementById("myForm");
+        myForm.addEventListener("submit", checkForm, true);
+    
+        // HTML5 form validation
+    
+        var supports_input_validity = function()
+        {
+          var i = document.createElement("input");
+          return "setCustomValidity" in i;
+        }
+    
+        if(supports_input_validity()) {
+          var usernameInput = document.getElementById("field_username");
+          usernameInput.setCustomValidity(usernameInput.title);
+      
+          var pwd1Input = document.getElementById("field_pwd1");
+          pwd1Input.setCustomValidity(pwd1Input.title);
+    
+          var pwd2Input = document.getElementById("field_pwd2");
+    
+          // input key handlers
+    
+          usernameInput.addEventListener("keyup", function(e) {
+            usernameInput.setCustomValidity(this.validity.patternMismatch ? usernameInput.title : "");
+          }, false);
+    
+          pwd1Input.addEventListener("keyup", function(e) {
+            this.setCustomValidity(this.validity.patternMismatch ? pwd1Input.title : "");
+            if(this.checkValidity()) {
+              pwd2Input.pattern = RegExp.escape(this.value);
+              pwd2Input.setCustomValidity(pwd2Input.title);
+            } else {
+              pwd2Input.pattern = this.pattern;
+              pwd2Input.setCustomValidity("");
+            }
+          }, false);
+    
+          pwd2Input.addEventListener("keyup", function(e) {
+            this.setCustomValidity(this.validity.patternMismatch ? pwd2Input.title : "");
+          }, false);
+    
+        }
+    
+      }, false);
+    
+    </script>
+{% if messages %}
+{% for m in messages %}
+<script>
+ Swal.fire({
+  icon:'success',,
+  text: "{{m}}",
+  confirmButtonText: 'OK',
+  confirmButtonColor:'blue'
+})
+</script>
+{% endfor %}
+{% endif%}
+
+<!-- partial -->
+<script src={% static 'js/script.js' %}>
+</script>
+<script src={% static 'js/media.js' %}></script>
+</body>
+</html>
+
+
+
+
+

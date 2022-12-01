@@ -1,0 +1,44 @@
+
+button{border:none; background: none;cursor:pointer}
+button{text-decoration: none; color:#353839}
+.sous-header button{
+color:#696969;
+font-weight:550;
+font-size: 13px;
+font-family: arial;
+text-decoration: none;
+}
+.sous-header button :hover{
+color:#ff8c00;
+} 
+h2{font-size: 20px; color:#353839}
+.cont h2{ margin-bottom: 15px;}
+a:hover{color:#ff4f00;}
+.contain{position: relative;top:80px; display:flex; flex-direction: column; gap:30px; justify-content: center; align-items: center;}
+.cont {padding: 15px 20px; background: rgba(255,255,255,0.5) ; border-radius: 5px;}
+.cont a{font-weight: 600; font-size: 17px;}
+center .bx,.cont .fa{font-size: 50px;}
+
+.boutton{
+  width:100%;
+  display: flex;
+  justify-content: center;}   
+input{height: 40px; position: relative;left:15px}
+input[type='text'],input[type='email']{width:250px}
+input:focus{border-color:#203a55;}
+input[type='submit']
+{margin-bottom: 0;
+width:  150px;
+height: 40px;
+left:0;
+margin-left: 30px;
+text-align: center;
+padding: 0;
+color:#fff;font-weight: 600;
+background-color:#1e90ff;}
+input[type='submit']:hover{opacity:0.8; transition: opacity 0.1s;}
+.cont h2 {color:#353839}
+.role label {position: relative; top:-12px}
+
+.role label {position: relative; top:-13px; font-size: 14px; font-weight: 600;}
+.role{display: flex;}

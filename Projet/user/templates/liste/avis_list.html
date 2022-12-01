@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    
+    <title>Affichage</title>
+    <!-- {% load sweetify %}
+    {% sweetify %} -->
+</head>
+<body>
+    <h1>Avis Juridiques</h1>
+    <br><br>
+    <table class="table">
+        <thead>
+            <tr>
+              <th>Consulter</th>
+              <th>Num</th>
+              <th>Titre</th>
+              <th>Date</th>
+              <th>Document</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for acc in accords %}
+            <tr>
+                <td>  <a href="{% url 'affiche_detail_accord' acc.id%}">ici</a> </td>
+                <td>{{ acc.num }}</td>
+                <td>{{ acc.titre }}</td>
+                <td>{{ acc.date_de_signature }}</td>
+                <td>
+                    <a href="{{ acc.accord.url }}" class="btn btn-primary btn-sm" target="_blank">
+                        view PDF </a>
+                    </td>
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

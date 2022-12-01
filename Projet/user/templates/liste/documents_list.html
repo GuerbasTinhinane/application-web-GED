@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    
+    <title>Upload</title>
+    <!-- {% load sweetify %}
+    {% sweetify %} -->
+</head>
+<body>
+    <h1>Upload Documents</h1>
+    <br><br>
+    <table class="table">
+        <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Type</th>
+              <th>Document</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for doc in documents %}
+            <tr>
+                <td>{{ doc.nom }}</td>
+                <td>{{ doc.typee }}</td>
+                <td>
+                    <a href="{{ doc.document.url }}" class="btn btn-primary btn-sm" target="_blank">
+                        Download PDF </a>
+                    </td>
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+
+
+

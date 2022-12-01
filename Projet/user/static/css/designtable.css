@@ -1,0 +1,166 @@
+
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+  @import url('https://fonts.googleapis.com/css2?family=Nunito&family=Poppins&family=Public+Sans&family=Roboto&display=swap');
+
+  
+  /* search column */
+
+  tfoot input {
+      width: 100%;
+      padding: 3px;
+      height:30px;
+      box-sizing: border-box;
+      font-size: 12px;
+  }
+
+  /* nombre de lignes à afficher*/
+  .dataTables_wrapper .dataTables_length{
+    color:#ff8c00;
+    font-weight: 600;
+    position: absolute;
+    left:210px;
+    top:-43px;
+  }
+  .dataTables_wrapper .dataTables_length select{
+    border-color: #fff;
+    border-radius: 1px;
+    color:#353839;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+  }
+  /*search data tabel + barre de recherche*/
+  .dataTables_filter {position:relative; top:-55px;}
+  .dataTables_filter input{margin-top:15px;min-width: 220px;}
+  .dataTables_filter label {color:#035096;}
+
+  /*buttons export pdf , copy , excel , print*/
+  button.dt-button, div.dt-button, a.dt-button, input.dt-button{
+  position: relative;
+  top:10px;
+  left:10px;
+  display: inline-block;
+  box-sizing: border-box;
+  margin-left: 0.167em;
+  margin-right: 0.167em;
+  margin-bottom: 0.333em;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 17px;
+  line-height: 17px;
+  color:#fff;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 5px 10px;
+  padding-bottom: 0;
+  margin-bottom: 10px;
+  background:#1e90ff;}
+
+  /*button export:hover*/
+button.dt-button:hover:not(.disabled), div.dt-button:hover:not(.disabled), a.dt-button:hover:not(.disabled), input.dt-button:hover:not(.disabled)
+{background:#73c2fb;
+border-color: #73c2fb    ;
+}
+
+/*table.dataTable thead .sorting{color:#1974d2;}
+/******************************************************************************************************/
+/*la table*/
+.styled-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: 'public-sans';
+  min-width: 400px;
+
+}
+.styled-table thead tr {
+  color:#000066;
+  box-shadow: rgba(8, 8, 8, 0.06) 0px 2px 4px 0px inset;
+  text-align: left;
+  background:#fff;
+}
+.sorting{
+  color:#000066;
+  box-shadow: rgba(8, 8, 8, 0.06) 0px 2px 4px 0px inset;
+  text-align: left;
+  background:#fff;
+}
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+  text-align: center;
+}
+.styled-table tbody tr {
+  border-bottom: 1px solid #707070;
+  color:#353839;
+}
+
+.styled-table tbody tr:hover{
+  font-weight:600;
+  color:#1974d2;
+}
+.de{
+  color:#d42a1b;
+  font-size: 18px;
+}
+.up{
+  color: #e49b0f;
+  margin-right: 7px;
+  font-size: 18px;
+}
+.view{
+  color: #488a63;
+  font-size: 18px;
+}
+
+  /* num des pages*/
+  .dataTables_wrapper .dataTables_paginate .paginate_button {
+    font-family: 'poppins';
+    display: inline-block;
+    min-width: 1.5em;
+    padding: 0.5em 1em;
+    text-align: center;
+    text-decoration: none !important;
+    cursor: pointer;
+    *cursor: hand;
+    color: #035096 !important;
+    border-radius: 2px;
+  }
+  /*butons previous + next*/
+  .paginate_button.previous, .paginate_button.next{box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;}
+ /*bouton num page*/     
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover,
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    border-color: #fff;
+      background: none !important;
+      color:#1e90ff !important;
+    }
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, 
+      .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+             background: none !important;
+         background-color: #1974d2 !important;
+         color:#fff !important;
+         border-color:white;
+      }
+
+      @media screen and (max-width:1000px)
+      {.dataTables_filter { top:0px}
+      .dataTables_wrapper .dataTables_length{font-size: 10px;}
+      button.dt-button, div.dt-button, a.dt-button, input.dt-button{font-size:14px}
+      .dataTables_filter label {font-size: 11px;}  
+      .styled-table thead tr { font-size:10px;}
+      .styled-table tbody tr {
+        font-size: 9px;
+      }
+      tfoot input{font-size: 9px;}
+      
+    }
+   
+   @media screen and (max-width:800px)
+   {.dataTables_filter input{margin-top:15px;min-width: 200px;}}
+
+   @media screen and (max-width:750px)
+   {.dataTables_filter input{margin-top:15px;width: 130px; }
+   .dataTables_filter { left:10px}}
+
+@media screen and (max-width:650px) 
+{.dataTables_filter input{width:170px;}}

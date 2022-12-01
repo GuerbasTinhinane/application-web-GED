@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400&display=swap');
+
+*{margin:0;
+padding:0;}
+
+
+
+.container{
+width:100%;
+height:auto;
+display: flex;
+justify-content: center;
+align-content: center;
+align-items: center;
+font-family: Arial;
+}
+
+
+
+/*formulaire*/
+form
+{   max-width:750px;
+   background-color: #fff;
+   padding: 15px 50px;
+   font-size: 14px;
+   margin-top: 2000px;
+   border:2px solid #ced7e0;
+   border-radius: 10px;
+   box-shadow: -6px 2px 83px 0px #484848;
+   display:inline;
+
+}
+
+
+ /*en tete du formulaire*/
+.entete{
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+.entete img {
+height:150px;
+width: 150px;
+}
+
+
+/*input formulaire*/
+input[type="text"],input[type="password"] {
+height: 40px;
+width: 280px;
+margin-top: 15px;
+border: 2px solid #ddd;
+border-radius: 5px;
+padding-left: 15px;
+}
+
+input[type="text"]:focus,input[type="password"]:focus {
+    outline: none;
+    border-color: #5c7186;}
+
+input[type="checkbox"]
+{margin-top: 15px;
+margin-left: 32px;}
+
+/*icone du formulaire*/
+.icone{
+font-size: 22px;
+position: relative;
+top:3px;
+padding-right: 10px;
+}
+
+/*Afficher masquer mdp*/
+.button{
+    position: relative;
+    left:-35px;
+    top:5px;
+    height: 100px;
+    margin:0;
+    width:20px;
+    font-size:23px;
+    padding: 0;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: 	#A9A9A9
+}
+/* boutton connexion*/
+.button1{
+font-size: 15px;
+width:290px;
+background-color: #ff7a00;
+cursor: pointer;
+border-radius: 10px;
+margin: 15px 0px 15px 33px;
+border: 0;
+outline: 0;
+height: 40px;
+color: #fff;
+font-weight: 600;
+transition: background 0.05s;
+}
+.button1:hover{
+transform:translateY(1px);
+background-color: rgb(255, 146, 21);
+}
+/*mot de passe oublié*/
+.lien{
+text-align: center;
+font-size: 12px;
+}
+.lien a {
+color:#1E90FF;
+}
+
+
+
+
+
+
+
+

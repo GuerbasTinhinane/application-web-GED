@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Contrat</title>
+  <script src="jquery-3.5.1.js"></script>
+
+  {% load static %}
+  <link rel="stylesheet" href={% static 'css/modal.css' %}>
+  <link rel="stylesheet" href={% static "css/style.css" %}>
+  <link rel="stylesheet" href={% static "css/table.css" %}>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+   
+  <link rel="icon" type="image/png"  href={% static 'images/logo.png' %}>
+  <!-- data table links -->
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> <!-- ????-->
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+ 
+ 
+
+  <!-- search column-->
+  <script src="https:../../media/js/jquery.js"></script>
+  <script src="https:../../media/js/jquery.dataTables.js"></script>
+
+
+<!--- export files -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.css"/>
+ 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
+
+<!-- toggle columns-->
+<script src="http:../../media/js/jquery.js"></script>
+<script src="http:../../media/js/jquery.dataTables.js"></script>
+<link rel="stylesheet" href="http:../../media/css/jquery.dataTables.css">
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href={% static "css/designtable.css" %}>
+<script>
+$(document).ready(function() {
+  var table = $('.table1').DataTable( {
+    /*export files*/ 
+
+      dom: 'Blfrtip',
+      buttons:[
+          "copy", 'pdf', 'excel','print'
+         ],
+      lengthMenu: [
+          [ 10, 25, 50, 100 ],
+          [ '10', '25', '50', '100' ]
+          ],
+        
+    "columnDefs": [ 
+
+      {
+          "targets": [ 4 ],
+          "searchable": true,
+          'orderable': false
+      }
+
+  ] ,
+        "oLanguage": {
+          "sSearch": "Rechercher" //search
+        },
+        "language": { "lengthMenu": "Afficher _MENU_", 
+         "zeroRecords": "Aucun enregistrement trouvé", 
+         "info": " ", 
+         "paginate": {
+            "previous": "<<",
+            "next": ">>"  },
+         "infoEmpty": " ",
+         "infoFiltered": "" 
+        }   
+      } );
+      /*
+      .dataTables_wrapper .dataTables_info {visibility:hidden}*/   
+      $('.buttons-excel span').html("<i class='fa fa-file-excel-o' aria-hidden='true'></i> <br> <span class='petit'>Excel</span>")
+      $('.buttons-print span').html("<i class='fa fa-print' aria-hidden='true'></i>  <br> <span class='petit'>Editer</span>")
+      $('.buttons-copy span').html("<i class='fa fa-clone' aria-hidden='true'></i>  <br> <span class='petit'>Copier</span>")
+      $('.buttons-pdf span').html("<i class='fa fa-file-pdf-o' aria-hidden='true'></i>  <br> <span class='petit'>Pdf</span>")
+        
+      
+
+ /* ----search column---*/
+  $('#example tfoot th').each( function () {
+      var title = $('#example thead th').eq( $(this).index() ).text();
+      $(this).html( '<input type="text" placeholder="  '+title+'" />' );
+  } );
+
+  // DataTable
+  var table = $('#example').DataTable();
+
+  // Apply the filter
+  table.columns().eq( 0 ).each( function ( colIdx ) {
+      $( 'input', table.column( colIdx ).footer() ).on( 'keyup change', function () {
+          table
+              .column( colIdx )
+              .search( this.value )
+              .draw();
+      } );
+  } );
+
+/***** show hide columns ****/
+
+  $('a.toggle-vis').on( 'click', function (e) {
+      e.preventDefault();
+      $(this).toggleClass( "blue" )
+      $(this).toggleClass( "grey" )
+      // Get the column API object
+      var column = table.column( $(this).attr('data-column') );
+
+      // Toggle the visibility
+      column.visible( ! column.visible() );
+  } );
+
+
+} );
+
+////////////////////////////
+$(document).ready(function() {
+  var table = $('.table2').DataTable( {
+    /*export files*/ 
+
+      dom: 'Blfrtip',
+      buttons:[
+          "copy", 'pdf', 'excel','print'
+         ],
+      lengthMenu: [
+          [ 10, 25, 50, 100 ],
+          [ '10', '25', '50', '100' ]
+          ],
+        
+    "columnDefs": [ 
+
+      {
+          "targets": [ 2 ],
+          "searchable": true,
+          'orderable': false
+      }
+
+  ] ,
+        "oLanguage": {
+          "sSearch": "Rechercher" //search
+        },
+        "language": { "lengthMenu": "Afficher _MENU_", 
+         "zeroRecords": "Aucun enregistrement trouvé", 
+         "info": " ", 
+         "paginate": {
+            "previous": "<<",
+            "next": ">>"  },
+         "infoEmpty": " ",
+         "infoFiltered": "" 
+        }   
+      } );
+      /*
+      .dataTables_wrapper .dataTables_info {visibility:hidden}*/   
+      $('.buttons-excel span').html("<i class='fa fa-file-excel-o' aria-hidden='true'></i> <br> <span class='petit'>Excel</span>")
+      $('.buttons-print span').html("<i class='fa fa-print' aria-hidden='true'></i>  <br> <span class='petit'>Editer</span>")
+      $('.buttons-copy span').html("<i class='fa fa-clone' aria-hidden='true'></i>  <br> <span class='petit'>Copier</span>")
+      $('.buttons-pdf span').html("<i class='fa fa-file-pdf-o' aria-hidden='true'></i>  <br> <span class='petit'>Pdf</span>")
+        
+      
+
+ /* ----search column---*/
+  $('#example tfoot th').each( function () {
+      var title = $('#example thead th').eq( $(this).index() ).text();
+      $(this).html( '<input type="text" placeholder="  '+title+'" />' );
+  } );
+
+  // DataTable
+  var table = $('#example').DataTable();
+
+  // Apply the filter
+  table.columns().eq( 0 ).each( function ( colIdx ) {
+      $( 'input', table.column( colIdx ).footer() ).on( 'keyup change', function () {
+          table
+              .column( colIdx )
+              .search( this.value )
+              .draw();
+      } );
+  } );
+
+/***** show hide columns ****/
+
+  $('a.toggle-vis').on( 'click', function (e) {
+      e.preventDefault();
+      $(this).toggleClass( "blue" )
+      $(this).toggleClass( "grey" )
+      // Get the column API object
+      var column = table.column( $(this).attr('data-column') );
+
+      // Toggle the visibility
+      column.visible( ! column.visible() );
+  } );
+
+
+} );
+
+</script>
+
+<style>
+  tfoot th:last-child input{width:0; height:0; border-color: #fff;}
+  tfoot th:nth-last-child(2) input {width:auto; height:auto; border-color: #ddd;}
+  tfoot th:nth-last-child(2) input:focus {width:auto; height:auto; border-color: #ff8c00;;}
+
+  .dataTables_wrapper .dataTables_length{
+    color:#ff8c00;
+    font-weight: 600;
+    position: absolute;
+    top:10%;
+    left:25%;
+  }
+  /*search data tabel + barre de recherche*/
+  .dataTables_filter {position:relative; top:0px;}
+  .dataTables_filter input{margin-top:15px;min-width: 300px;}
+  .dataTables_filter label {color:#035096;}
+  .header{
+min-width:400px; 
+background-color: #fff; 
+margin:0 60px; 
+font-size: 14px;
+padding: 5px 10px;
+color:#035096;
+font-family: 'nunito';
+}
+.header2{margin-top: 50px;}
+
+.modal1 label{position:relative;top: 15px;}
+.modal1 input:nth-of-type(4) {position:relative; top:-20px; left:190px; min-width:100px}
+</style>
+
+</head>
+
+ 
+<body>
+
+  <nav class="sidebar ">
+    <header>
+      <div class="image-text">
+        <span class="image">
+          <a href= "{% url 'juriste' %}"> <img src={% static 'images/logo-removebg-preview.png' %} alt="logo"> </a>
+        </span>
+
+         <div class="text header-text">
+          <span class='name'> SONATRACH </span>
+        </div>
+        
+      </div>
+      <i class='bx bx-menu toggle'></i>
+    </header>
+
+    <div class="menu-bar">
+      <div class="menu">
+       
+        <ul class="menu-link">
+
+          
+        
+
+              <div class="droppdown">
+                <li class="nav-link dropbtn ">
+                  <a  >
+                    <i class='bx bx-file icon'></i>
+                    <span class="text nav-text">Soit transmis</span>
+                  </a>
+                </li>
+                <div class="dropdownst-content">
+                  <a href=" {% url "st_create" %} "class='ast'><i class='bx bx-list-plus'></i> Ajouter </a>
+                  <a href=" {% url "update_st" 0 %} "class='cst'><i class='bx bx-show-alt'></i> Consulter</a>
+                </div>
+              </div>
+            
+
+              
+              <div class="droppdown">
+                <li class="nav-link dropbtn ">
+                  <a style="background:whitesmoke;">
+                    <i class="fa fa-files-o icon" aria-hidden="true"></i>
+                    <span class="text nav-text">Contrats</span>
+                  </a>
+                </li>
+                <div class="dropdownct-content">
+                  <a href=" {% url "contrat_create" %} " class='act'><i class='bx bx-list-plus'></i> Ajouter </a>
+                  <a href=" {% url "update_contrat" '0' %} " class='cct'><i class='bx bx-show-alt'></i> Consulter</a>
+                </div>
+              </div>
+             
+
+          <li class="nav-link down">
+            <a > 
+              <i class='bx bx-folder-open icon'></i>
+              <span class="text nav-text">Documents <br> Contractuels <i class='bx bxs-chevron-down dropdown-btn'></i> </span>
+            </a>
+          </li>
+
+          <div class="drop-down">
+          <ul class="dropdown-container hide ">
+           
+            <div class="droppdown1 sous-menu">
+              <li class="dropbtn1">
+                -  Convention de <br> détachement
+              </li>
+              <div class="dropdownconv-content">
+                <a href=" {% url "convention_create" %} " class="a1"><i class='bx bx-list-plus'></i> Ajouter </a>
+                <a href=" {% url "update_convention" '0' %} "  class="a2"><i class='bx bx-show-alt'></i> Consulter</a>
+              </div>
+            </div>
+
+            <div class="droppdown2 sous-menu">
+              <li class="dropbtn2">
+               -  Avenant
+              </li>
+              <div class="dropdownav-content ">
+                <a href=" {% url "avenant_create" %} "  class="a3"><i class='bx bx-list-plus'></i> Ajouter </a>
+                <a href=" {% url "update_avenant" '0' %} "  class="a4"><i class='bx bx-show-alt'></i> Consulter</a>
+              </div>
+            </div>
+
+            <div class="droppdown3 sous-menu">
+              <li class="dropbtn3">
+                -  Lettre accord
+              </li>
+              <div class="dropdownla-content">
+                <a href=" {% url "lettreAccord_create" %} "  class="a5"><i class='bx bx-list-plus'></i> Ajouter </a>
+                <a href=" {% url "update_lettreAccord" '0' %} "  class="a6"><i class='bx bx-show-alt'></i> Consulter</a>
+              </div>
+            </div>
+
+            <div class="droppdown4 sous-menu">
+              <li class="dropbtn4">
+                -  Accord
+              </li>
+              <div class="dropdownac-content">
+                <a href=" {% url "accord_create" %} "  class="a7"><i class='bx bx-list-plus'></i> Ajouter </a>
+                <a href=" {% url "update_accord" '0' %} "  class="a8"><i class='bx bx-show-alt'></i> Consulter</a>
+              </div>
+            </div>
+
+            <div class="droppdown5 sous-menu">
+              <li class=" dropbtn5">
+                -  Accord d'operation
+              </li>
+              <div class="dropdownaop-content">
+                <a href=" {% url "accordOperation_create" %} "  class="a9"><i class='bx bx-list-plus'></i> Ajouter </a>
+                <a href=" {% url "update_accordOp" '0' %} "  class="a10"><i class='bx bx-show-alt'></i> Consulter</a>
+              </div>
+            </div>
+            
+          </ul>
+        </div>
+     
+
+          <div class="droppdown">
+            <li class="nav-link dropbtn ">
+              <a>
+                <i class="fa fa-balance-scale icon" aria-hidden="true"></i>
+                <span class="text nav-text">Avis juridique</span>
+              </a>
+            </li>
+            <div class="dropdownaj-content">
+              <a href=" {% url "avisJuridique_create" %} "class='aaj'><i class='bx bx-list-plus'></i> Ajouter </a>
+              <a href=" {% url "update_avis" '0' %} " class='caj'><i class='bx bx-show-alt'></i> Consulter</a>
+            </div>
+          </div>
+
+
+          <div class="droppdown">
+            <li class="nav-link dropbtn ">
+              <a>
+                <i class='bx bx-pencil icon'></i>
+                <span class="text nav-text">Points de situations</span>
+              </a>
+            </li>
+            <div class="dropdownpds-content">
+              <a href=" {% url "pds_create" %} " class='apds'><i class='bx bx-list-plus'></i> Ajouter </a>
+              <a href=" {% url "update_pds" '0' %} " class='cpds'><i class='bx bx-show-alt'></i> Consulter</a>
+            </div>
+          </div>
+          <li class="nav-link navlink2">
+            <a href="{% url "dashboard" %}">
+              <i class="fa fa-tachometer icon" aria-hidden="true"></i>
+              <span class="text nav-text">Dashboard</span>
+            </a>
+          </li>
+          
+      
+      
+      </div>
+    </div>
+  </nav>
+  
+      <section class="home">
+        <li class="link2 hide">Soit transmis</li>
+        <li class="link3 hide">Contrats</li>
+        <li class="link4 hide">Documents contractuels</li>
+        <li class="link5 hide">Avis juridique</li>
+        <li class="link6 hide">Points de situations</li>
+        <li class="link7 hide">Dashboard</li>
+    <li class="slink1 hide">Convention de détachement</li>
+    <li class="slink2 hide">Avenant</li>
+    <li class="slink3 hide">Lettre accord</li>
+    <li class="slink4 hide">Accord</li>
+    <li class="slink5 hide">Accord d'opérations</li>
+   <header>
+    <h1>  <i class="fa fa-balance-scale" aria-hidden="true"></i> Gestion des contrats d'associations</h1>
+    <span class="nomprenom"><i class='bx bxs-user-circle '></i> {{ request.user.first_name }} {{ request.user.last_name }} <i class='bx bxs-down-arrow ' ></i></span>
+</header>
+  <ul class="sous-header masquer">
+    <li><a href=" {% url "logoutUser" %} "><i class='bx bx-log-out'></i>Deconnexion</li></a>
+    <li><a href="{% url "password_change" %}"><i class="fa fa-cog" aria-hidden="true"></i>Paramètres</li></a>
+  </ul>
+
+<div class="container">
+  <div class="header">
+    <a href="{% url "juriste" %}"> <i class='bx bx-home-alt icon'></i></a> / Contrat / <a>Les financements </a>    </div>
+     <div class="entete">
+     </div> 
+<div class="containertable">
+<table id="" class="styled-table table1 row-border hover" style="width:100%">
+  <thead>
+      <tr>
+       
+        <th>ID financement</th>
+        <th>Partenaire </th>
+        <th>Financement</th>
+        <th>Contrat</th>
+        <th>Actions</th>
+      </tr>
+  </thead>
+  <tbody>
+    {% for f in fdup %}
+            <tr>
+            
+            <td>{{f.code}}</td>
+           
+            <td>{{f.partenaire.nom_partenaire}}</td>
+            <td>{{f.pourcentage_fin}}</td>
+            <td>
+              <a href="{{ f.contrat.contrat_pdf.url }}" class="btn btn-primary btn-sm" target="_blank">
+                <i class="bx bx-show view"></i> </a>
+              </td>
+            <td><a href="#" class="update updatefin" ><i class='bx bxs-edit up'></i></a>
+              <a href="#" class="del delfin" ><i class='bx bxs-trash de'></i></a></td>
+            </tr>
+            {% endfor %}
+  </tbody>
+ 
+</table>
+</div>
+
+<div class="header header2 ">
+  <a href={% url 'chefdep'%}> <i class='bx bx-home-alt icon'></i></a> / Contrat / <a> Les partenaires </a>    </div>
+   <div class="entete">
+   </div> 
+<div class="containertable">
+<table id="" class=" styled-table table2 row-border hover" style="width:100%">
+  <thead>
+      <tr>
+          <th>Id partenaire</th>
+          <th>Partenaire</th>
+          <th>Actions</th>
+      </tr>
+  </thead>
+  <tbody>
+    {% for p in partenaire %}
+    <tr>
+      <td>{{p.code}}</td>
+    <td>{{p.nom_partenaire}}</td>
+    <td><a href="#" class="update updatepart" ><i class='bx bxs-edit up'></i></a>
+      <a href="#" class="del delpart" ><i class='bx bxs-trash de'></i></a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  
+</table>
+</div>
+
+
+<h5 style="float: left;"><a href="tablecontrat.html"><i class='bx bxs-left-arrow-alt'></i> Page précédante </h5></a>
+
+
+</div>
+
+
+ {% comment %} apres supression et apres modification  {% endcomment %}
+ {% if messages %}
+    {% for m in messages %}
+    <script>
+     Swal.fire({
+      icon:'success',
+      position: 'top',
+      text: "{{m}}",
+      showConfirmButton: false,
+      timer:2500
+    })
+    </script>
+    {% endfor %}
+    {% endif%}
+ 
+   
+ 
+ </section>
+ {% comment %} class modal update F  {% endcomment %}
+ <div id="demoF" class="modal modal1">
+ <div class="modal_content">
+   <a href="#" class="modal_close">&times;</a>
+   <div class="form ">
+    <form method="POST" enctype="multipart/form-data" id="ajouterdc" action="#">
+      {% csrf_token %}
+      <h2> Financement du Partenaire</h2>
+      <div class="containerform accordop">
+        <input name="code" type="hidden" id="code" value='{{x.code}}'>
+        <input name="partenaire" type="hidden" id="partenaire" value='{{y}}' required>
+        <input name="contrat" type="hidden" id="contrat" value='{{x.contrat}}' required>
+
+        <label for="pr">Pourcentage de Financement</label>
+        <input name="pourcentage_fin" type="number" id="pr" min="1" max="49" value='{{x.pourcentage_fin}}' required>
+        <input name="fdup" type="hidden" id="id_fdup" value='{{True}}'>
+        <div class="boutton"> 
+           <input type="submit" value="Valider">
+         </div> 
+       </div> </center>
+     </form>
+   </div>   
+ </div>
+ </div>
+ 
+ {% comment %} class modal update P  {% endcomment %}
+ <div id="demoP" class="modal">
+  <div class="modal_content">
+    <a href="#" class="modal_close">&times;</a>
+    <div class="form ">
+      <form method="POST" enctype="multipart/form-data" id="ajouterdc" action="#">
+        {% csrf_token %}
+        
+        <h2> Partenaire</h2>
+        <div class="containerform accordop">
+          <input name="code" type="hidden" id="code" value='{{x.code}}' >
+          <label for="nom">nom partenaire</label>
+          <input name="nom_partenaire" maxlength="20" type="text" id="nom" value='{{x.nom_partenaire}}' required>
+          <input name="pays" type="hidden" id="pays" value='{{x.pays}}' required>
+          <input name="longitude" type="hidden" id="long" value='{{x.longitude}}' required>
+          <input name="latitude" type="hidden" id="lat" value='{{x.latitude}}' required>
+          <input type="hidden" name="partenaire" value="True" id="id_partenaire">
+           <div class="boutton"> 
+              <input type="submit" value="Valider">
+            </div> 
+          </div> 
+       </form>
+    </div>   
+  </div>
+  </div>
+ 
+   
+ 
+ <!-- partial -->
+     <script src={% static 'js/script.js' %}></script>
+     <script src={% static 'js/media.js' %}></script>
+     <script src={% static 'js/toggle.js' %}></script>
+ 
+ 
+     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ 
+   <script>
+
+     
+
+
+       var td = document.querySelectorAll('.table1 td:first-child')
+       var td2 = document.querySelectorAll('.table2 td:first-child')
+     var updatefin = document.querySelectorAll('.updatefin')
+     var updatepart = document.querySelectorAll('.updatepart')
+     var delfin = document.querySelectorAll('.delfin')
+     var delpart = document.querySelectorAll('.delpart')
+     
+     window.addEventListener("load", function(){
+ 
+     for(var i=0; i<updatefin.length;i++)
+     { var x = td[i].innerHTML
+      updatefin[i].href="http://127.0.0.1:8000/update_partenaire_fdup/"+ x +"/#demoF"
+     }
+
+     for(var i=0; i<updatefin.length;i++)
+     { var x = td[i].innerHTML
+        delfin[i].addEventListener("click", function(){
+          var d = this.parentElement.parentElement.firstElementChild.innerHTML
+        Swal.fire({
+          "title":"Êtes-vous sûr?",
+          "text":"Vous ne pourrez pas revenir en arrière !",
+          "icon":"question",
+          "showCancelButton":true,
+          "cancelButtonText":"Non, Annuler",
+          "confirmButtonText":"Oui, Supprimer",
+          "reverseButtons":true,
+          "confirmButtonColor":"darkred",
+        })
+        .then(function(result) {
+          if(result.isConfirmed) {
+            window.location.href = "http://127.0.0.1:8000/delete_fdup/"+ d +"/"
+
+          }
+        })   
+      })
+    }
+    for(var j=0; j<updatepart.length;j++)
+     { var y = td2[j].innerHTML
+      updatepart[j].href="http://127.0.0.1:8000/update_partenaire_fdup/"+ y +"/#demoP"
+        delpart[j].addEventListener("click", function(){
+          var c = this.parentElement.parentElement.firstElementChild.innerHTML
+        Swal.fire({
+          "title":"Êtes-vous sûr?",
+          "text":"Vous ne pourrez pas revenir en arrière !",
+          "icon":"question",
+          "showCancelButton":true,
+          "cancelButtonText":"Non, Annuler",
+          "confirmButtonText":"Oui, Supprimer",
+          "reverseButtons":true,
+          "confirmButtonColor":"darkred",
+        })
+        .then(function(result) {
+          if(result.isConfirmed) {
+            window.location.href = "http://127.0.0.1:8000/delete_partenaire/"+ c +"/"
+
+          }
+        })   
+      })
+    }
+  
+  
+  })
+ 
+     </script>
+ </body>
+ </html>
+ 
+ 
+
+
+
+
+

@@ -1,0 +1,670 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Poppins&family=Public+Sans&family=Roboto&display=swap');
+* {
+  font-family:"Poppins",sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;}
+
+body { background:#f9fbfd;;
+transition: all 0.5s ease;
+overflow-x:hidden;
+}
+
+
+/*--------------- Menu de navigation -----------*/
+.sidebar {  /*barre état normal*/
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  background: #fff;
+  transition: all 0.5s ease;
+  z-index:5;
+}
+.sidebar.close {/*barre fermée*/
+  width: 90px;
+}
+/*partie header du menu de navigation*/
+.sidebar header {
+  padding: 10px 14px 0 14px;
+  position: relative;
+  height:65px;
+  background-color:#ffffff;
+  border-bottom: 1px solid #dcdcdc;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+
+}
+ /*image du logo sonatrach*/
+.sidebar .image-text img{
+  width: 60px;
+  height:55px;
+}
+
+.sidebar header .image-text {
+  display: flex;
+  align-items: center;
+}
+
+header .image-text .header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-text .name {
+  font-weight: 600;
+  font-size: 12.5px;
+}
+
+.header-text .profession {
+  margin-top: -2px;
+  font-size: 12px;
+}
+
+.sidebar .text {
+  font-size: 12px;
+  font-weight: 500;
+  color: #707070;
+  transition:all 0.3s ease;
+ 
+  opacity: 1;
+}
+/*header right*/
+.sidebar.close ~ .header {
+  left: 188px;
+  width: calc(110% - 88px);
+}
+/*suite entete*/ 
+.home header
+{ z-index: 1;
+padding:20px 20px;
+height:65px;
+width:100%;
+background-color:#fff;
+display: flex;
+position:fixed;
+justify-content: space-between;
+border-bottom: 1px solid #dcdcdc;
+box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+
+}
+
+header h1 
+{font-family: 'Open-sans', sans-serif; 
+font-size: 25px; 
+position: relative; 
+top: -10px; 
+color:#353839;}
+
+header h1 .fa-balance-scale{
+font-size:40px;
+color:#ff8c00;
+margin-right: 10px;
+margin-left: 25px;
+}
+
+header span .bxs-user-circle
+{font-size:30px;
+position:relative;
+top:5px;
+margin-right:6px;}
+
+header span .bxs-down-arrow
+{font-size:10px;
+position:relative;
+top:1px;
+cursor:pointer;
+margin-left:5px;}
+
+.nomprenom
+{position:relative;
+left:-250px;
+font-size: 12px;
+color:#707070;
+transition: all 0.5s;
+}
+
+.sous-header{
+list-style: none;
+position: absolute;
+height:70px;
+width:140px;
+top:80px;
+right:15px;
+background-color:#fff;
+display: flex;
+flex-direction: column;
+align-content: center;
+align-items: flex-start;
+justify-content: center;
+box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+.afficher
+{height:70px;
+position: fixed;
+width:140px;
+transition: height 0.2s;
+visibility: visible;
+z-index:10;
+}
+.masquer
+{ width:0;
+height:0px;
+transition: height 0.2s;
+visibility:hidden;}
+
+.sous-header i{
+margin-left: 10px;
+margin-right: 15px;
+}
+
+.sous-header .fa-cog{
+margin-left:13px;
+  }
+
+.sous-header li:first-child{
+border-bottom: 1px solid #dcdcdc;
+width:100%;
+}
+
+.sous-header li a{
+color:#696969;
+font-weight:550;
+font-size: 13px;
+font-family: arial;
+text-decoration: none;
+}
+.sous-header li a:hover{
+color:#ff8c00;
+}
+/***************************************************************************************/
+/*toggle du menu de navigation état normal*/
+.sidebar header .toggle {
+  position: absolute;
+  z-index: 90;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%) rotate(180deg);
+  height: 25px;
+  width: 25px;
+  color:#ff8c00;  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 32px;
+  transition: all 0.3s ease;
+  cursor:pointer;
+}
+
+/*toggle du menu de navigation la bare est réduite*/
+.sidebar.close header .toggle {
+  transform: translateY(-50%);
+}
+
+/*-- partie 2 du menu de navigation--*/
+/* texte quand on ferme le menu de navigation */
+.sidebar.close .text {
+  opacity: 0;
+}
+
+.sidebar .menu {
+padding: 10px 14px 0 14px;
+}
+.sidebar .menu-bar {
+  height: calc(100% - 50px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y:auto;
+  overflow-x:hidden;
+  scrollbar-width:thin;
+  scrollbar-color: #f4f0ec transparent;
+  margin-bottom: 20px;
+  border-right: 1px solid #dcdcdc;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;;
+}
+
+/*liste du menu de navigation "le contenu" */
+.sidebar li {
+  height: 40px;
+  width:95%;
+  margin-top: 15px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+/* icones du menu de navigation */
+.sidebar li .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  font-size: 20px;
+  
+}
+
+.sidebar li .icon,
+.sidebar li .text {
+  transition: all 0.2s ease;
+  color: #707070;
+}
+
+.sidebar li a {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.4s ease;
+}
+
+.sidebar li:hover{  background: #f4f0ec;transition: background 1s;}
+.sidebar li a:hover {
+  background: #f4f0ec;
+  border-radius: 6px;	
+ 
+}
+/*sous menu de navigation documents contractuels*/
+.hide{
+ width:0;
+ height:0px;
+ visibility: hidden;
+ transition: height 0.2s;
+}
+.show{
+margin: 0;
+padding: 0;
+width:auto;
+background-color:#fff;
+transition: height 0.2s;
+overflow: hidden;
+}
+.position{
+position:relative;
+top:0;
+left:0;
+}
+.dropdown-btn
+{ transition: all 0.2s ease;
+  color: #707070;
+  margin-left: 30px;
+}
+.dropdown-container{
+display:flex;
+flex-direction: column;
+}
+.dropdown-container li {
+margin:0;
+font-size: 11px;
+height:0px;
+margin-top: 0px;
+position: relative;
+left:-50px;
+color: #707070;
+font-weight: 500;
+width:130px;
+
+}
+.dropdown-container li:first-child {margin:30px 0 5px 60px;}
+
+  .dropdown-container li:hover {
+    background-color:white;
+    color:#FF8C00}
+  
+ 
+    .droppdown:hover .dropbtn {background-color: #f4f0ec;}
+    .droppdown1:hover .dropbtn1, .droppdown2:hover .dropbtn2,
+     .droppdown3:hover .dropbtn3,.droppdown4:hover .dropbtn4,
+     .droppdown5:hover .dropbtn5 {color:#FF8C00;}
+
+     .sidebar li .iconx {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 40px;
+      font-size: 17px;
+      
+    }
+    
+    .sidebar li .iconx {
+      transition: all 0.2s ease;
+      color: #919191;
+    }
+/**dropdown ajout-consultation**/
+/* dropdown st*/
+.dropdownst-content {
+  position: relative;
+  left:30px;
+  top:10px;
+  display: none;
+  background-color: #fff;
+  width: 80%;
+  z-index: 89;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.dropdownst-content a {
+  color: #707070;
+  font-size: 11.5px;
+  padding: 5px;
+  text-decoration: none;
+  display: block;
+}
+.dropdownst-content a:hover {background-color:#f4f0ec;}
+
+.droppdown:hover .dropdownst-content {display: block;}
+/*dropdown contrat*/
+.dropdownct-content {
+  position: relative;
+  left:30px;
+  top:10px;
+  display: none;
+  background-color: #fff;
+  width: 80%;
+  z-index: 89;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.dropdownct-content a {
+  color: #707070;
+  font-size: 11.5px;
+  padding: 5px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdownct-content a:hover {background-color:#f4f0ec;}
+
+.droppdown:hover .dropdownct-content {display: block;}
+/* dropdown aj*/
+.dropdownaj-content {
+  position: relative;
+  left:30px;
+  top:10px;
+  display: none;
+  background-color: #fff;
+  width: 80%;
+  z-index: 89;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.dropdownaj-content a {
+  color: #707070;
+  font-size: 11.5px;
+  padding: 5px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdownaj-content a:hover {background-color:#f4f0ec;}
+
+.droppdown:hover .dropdownaj-content {display: block;}
+
+/*dropdown pds*/
+.dropdownpds-content {
+  position: relative;
+  left:30px;
+  top:10px;
+  display: none;
+  background-color: #fff;
+  width: 80%;
+  z-index: 89;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.dropdownpds-content a {
+  color: #707070;
+  font-size: 11.5px;
+  padding: 5px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdownpds-content a:hover {background-color:#f4f0ec;}
+
+.droppdown:hover .dropdownpds-content {display: block;}
+/* icones ajouter et consulter*/
+/* lettre accord*/
+.dropdownla-content {
+  position: relative;
+  left:40px;
+  top:15px;
+  display: none;
+  background-color: #fff;
+  width: 70%;
+  z-index: 89;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.dropdownla-content a {
+  color: #707070;
+  font-size: 10.5px;
+  padding-bottom: 7px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdownla-content a:hover {background-color:#f4f0ec;}
+.droppdown3:hover .dropdownla-content {display: block;}
+
+/* avenant*/
+.dropdownav-content {
+  position: relative;
+  left:40px;
+  top:15px;
+  display: none;
+  background-color: #fff;
+  width: 70%;
+  z-index: 89;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.dropdownav-content a {
+  color: #707070;
+  font-size: 10.5px;
+  padding-bottom: 7px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdownav-content a:hover {background-color:#f4f0ec;}
+.droppdown2:hover .dropdownav-content {display: block;}
+/* accord*/
+.dropdownac-content {
+  position: relative;
+  left:40px;
+  top:15px;
+  display: none;
+  background-color: #fff;
+  width: 73%;
+  z-index: 89;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.dropdownac-content a {
+  color: #707070;
+  font-size: 10.5px;
+  padding-bottom: 7px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdownac-content a:hover {background-color:#f4f0ec;}
+.droppdown4:hover .dropdownac-content {display: block;}
+
+/* accord d'opération*/
+.dropdownaop-content {
+  position: relative;
+  left:40px;
+  top:15px;
+  display: none;
+  background-color: #fff;
+  width: 70%;
+  z-index: 89;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.dropdownaop-content a {
+  color: #707070;
+  font-size: 10.5px;
+  padding-bottom: 7px;  text-decoration: none;
+  display: block;
+}
+
+.dropdownaop-content a:hover {background-color:#f4f0ec;}
+.droppdown5:hover >.dropdownaop-content {display: block;}
+
+/*convention de détachment*/
+.dropdownconv-content {
+  position: relative;
+  left:40px;
+  top:15px;
+  display: none;
+  background-color: #fff;
+  width: 70%;
+  z-index: 89;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.dropdownconv-content a {
+  color: #707070;
+  font-size: 10.5px;
+  padding-bottom: 7px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdownconv-content a:hover {background-color:#f4f0ec;}
+.droppdown1:hover .dropdownconv-content {display: block;}
+
+
+/*icones ajouter et consulter*/
+.bx-list-plus,.bx-show-alt
+{font-size: 20px; color: #FF8C00;
+  margin-right:5px;
+position: relative; top:5px}
+
+/*listes ajouter consulter*/
+.sous-menu
+{
+margin-left: 60px;
+width: 140px;}
+/* ajouter consulter  sous-menu docs contractuels*/
+
+/*partie contenu de l'application*/
+.home {
+  position: relative;
+  height:auto;
+  left: 250px;
+  width: calc(100% - 250px);
+  transition: all 0.5s ease;
+}
+
+.sidebar.close ~ .home {
+  left: 88px;
+  width: calc(100% - 88px);
+}
+/*****************************************/
+.nohide{
+width:auto;
+height:30px;
+padding: 7px 10px;
+background-color:#fdfff5;
+color:#353839;
+visibility: visible;
+border-radius: 15px;
+font-size: 12px;
+text-align: center;
+box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.link2 {position: fixed; z-index: 10; top:94px; left:100px;list-style: none;}
+.link3 {position: fixed; z-index: 10; top:150px; left:100px;list-style: none;}
+.link4 {position: fixed; z-index: 10; top:205px; left:100px;list-style: none;}
+.link5 {position: fixed; z-index: 10; top:260px; left:100px;list-style: none;}
+.link6 {position: fixed; z-index: 10; top:310px; left:100px;list-style: none;}
+.link7 {position: fixed; z-index: 10; top:370px; left:100px;list-style: none;}
+.link8 {position: fixed; z-index: 10; top:425px; left:100px;list-style: none;}
+.slink1 {position: fixed; z-index: 10; top:330px; left:100px;list-style: none;}
+.slink2 {position: fixed; z-index: 10; top:365px; left:100px;list-style: none;}
+.slink3 {position: fixed; z-index: 10; top:400px; left:100px;list-style: none;}
+.slink4 {position: fixed; z-index: 10; top:435px; left:100px;list-style: none;}
+.slink5 {position: fixed; z-index: 10; top:470px; left:100px;list-style: none;}
+  
+/*************************************************************************************************************************************/
+
+
+
+@media screen and (max-width:821px)
+{ 
+
+.containerhead{gap:10%}
+header h1 { font-size: 20px; width:120%;   left:-110px; top:-5px}
+header h1 .fa-balance-scale {font-size: 35px;margin-left:20%;}
+.nomprenom{font-size: 10px; top:-10px}
+.sous-header li a{font-size: 11px;}
+.afficher{width:120px}
+h4{font-size: 30px;}
+.image-text img{
+  width: 50px;
+  height:45px;
+}
+.sidebar.close {/*barre fermée*/
+  width: 75px;
+}
+.sidebar li .icon {
+  min-width: 45px;
+  font-size: 17px;
+}
+.sidebar header{width:120%}
+.sous-header li a{font-size: 10px;
+}}
+@media screen and (max-width:660px)
+{ header h1 { font-size:17px; left:-90px;}
+  header h1 .fa-balance-scale {font-size: 30px;}
+  .nomprenom{font-size: 9px; width:155px; top:0px}
+  header span .bxs-user-circle
+  {font-size:20px;}
+  header span .bxs-down-arrow
+  {font-size:8px;}
+  .afficher{width:100px}
+  .sous-header li a{font-size: 9.5px;
+  }}
+
+
+@media screen and (max-width:590px)
+{ header h1 { font-size: 15px; width:120%;top:0px}
+header h1 .fa-balance-scale {font-size: 25px;margin-left:20%;}
+.afficher{width:90px}
+.sous-header li a{font-size: 8px;
+}
+header span .bxs-down-arrow
+{font-size:6px;}
+}
+
+@media screen and (max-width:550px)
+{ header h1 { font-size: 13.5px; width:150%; left:-80px; top: 5px}
+header span .bxs-user-circle
+{font-size:16px;}
+.nomprenom{font-size: 7px;}
+header h1 .fa-balance-scale {font-size: 25px;margin-left:20%;}
+}
+@media screen and (max-width:550px)
+{ header h1 { font-size: 12px}}
+
+
+
+
+ @import url('https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap');
+.header-text .name{color:#353839; top:-5px;position:relative;font-family: 'Saira Stencil One'; font-size: 18px;}

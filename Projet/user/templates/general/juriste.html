@@ -1,0 +1,859 @@
+
+<!DOCTYPE html>
+<html lang="en" style="background: url('static/images/imag01.jpg') no-repeat center fixed; 
+-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+background-size: cover;
+overflow:hidden;
+ /* version standardisée */"
+>
+<head>
+  {% load i18n %}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accueil</title>
+  {% load static %}
+
+  <link rel="icon" type="image/png"  href={% static 'images/logo.png' %}>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+ 
+
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Public+Sans&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,600;0,700;1,700&display=swap');
+
+.de{
+  color:#d42a1b; 
+  margin-right: 7px;
+  font-size: 18px;
+}
+.up{
+  color: #e49b0f;
+  margin-right: 7px;
+  font-size: 18px;
+}
+.view{
+  color: #488a63;
+  font-size: 18px;
+}
+.bx{
+  font-size:18px;
+}
+* {
+  font-family:"Poppins",sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;}
+
+body {
+transition: all 0.5s ease;
+overflow-x:hidden;
+} 
+ a{text-decoration: none; color:#353839}
+ /*entete*/
+ header {
+     width: 100%;
+     display: flex;
+     justify-content: space-between;
+        padding: 10px 14px 0 14px;
+        height:65px;
+        background-color:#ffffff;
+        border-bottom: 1px solid #dcdcdc;
+        box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+      position: fixed;
+      z-index: 2;
+}
+.image-text img{
+    width: 60px;
+    height:55px;
+  }
+  
+  
+  header .image-text {
+    display: flex;
+    align-items: center;
+  }
+  
+  header .image-text .header-text h3 {
+    display: flex;
+    flex-direction: column;
+    color:#ff8c00;
+    position: relative;
+    top:-5px;
+    font-size: 40px;
+    font-family: 'Smooch', cursive;
+
+  }
+  header h1 
+  {font-family: 'Open-sans', sans-serif; 
+  font-size: 25px; 
+  position: relative; 
+  left:-50px;
+  color:#353839;}
+  
+header h1 .fa-balance-scale{
+font-size:40px;
+color:#ff8c00;
+margin-right: 10px;
+margin-left: 100px;
+  }
+  
+header span .bxs-user-circle
+  {font-size:30px;
+  position:relative;
+  top:5px;
+  margin-right:6px;}
+  
+  header span .bxs-down-arrow
+  {font-size:10px;
+  position:relative;
+  top:1px;
+  cursor:pointer;
+  margin-left:5px;}
+  
+  .nomprenom
+  {position:relative;
+  font-size: 12px;
+  color:#707070;
+  transition: all 0.5s;
+  }
+  .sous-header{
+    list-style: none;
+    position: absolute;
+    height:70px;
+    width:140px;
+    top:80px;
+    right:15px;
+    background-color:#fff;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: flex-start;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    }
+    .afficher
+    {height:70px;
+    position: fixed;
+    width:140px;
+    transition: height 0.2s;
+    visibility: visible;
+    z-index:10;
+    }
+    .masquer
+    { width:0;
+    height:0px;
+    visibility:hidden;}
+    
+    .sous-header i{
+    margin-left: 10px;
+    margin-right: 15px;
+    }
+    
+    .sous-header .fa-cog{
+    margin-left:13px;
+      }
+    
+    .sous-header li:first-child{
+    border-bottom: 1px solid #dcdcdc;
+    width:100%;
+    }
+    
+    .sous-header li a{
+    color:#696969;
+    font-weight:550;
+    font-size: 13px;
+    font-family: arial;
+    text-decoration: none;
+    }
+    .sous-header li a:hover{
+    color:#ff8c00;
+    }
+/* contenu*/
+    .container {
+  position: relative;
+  top:65px;
+  height:100%;
+    }
+    .containerhead{display:grid;
+    grid-template-rows: repeat (2, auto);
+    grid-template-columns: 80% 20%;
+    gap:10px;
+    position:relative;
+    top:45px;
+    }
+    .dashboard{background-color: rgba(255, 255, 255, 0.5);;
+      grid-row: 1/3s;
+      grid-column: 2/3;
+      width:90%;
+        padding:15px 20px;
+        border-radius: 2px;
+        font-size: 23px;
+        text-align: left;
+        color:#353839;
+        font-weight: 600;
+    position: relative;  
+    right:85px;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+       }
+      .bx,.fa{margin-right: 30px;}
+    .historique{background-color: rgba(255, 255, 255, 0.5);;
+      grid-row: 2/3;
+      grid-column: 2/3;
+      width:90%;
+        padding:15px 20px;
+        border-radius: 2px;
+        font-size: 23px;
+        text-align: left;
+        color:#353839;
+        font-weight: 600;
+    position: relative;  
+    right:85px;
+
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;}
+    .dashboard , .historique {color:#353839}
+    .dashboard a:hover, .historique a:hover{color:#ff4f00}
+    .info {background-color: rgba(255, 255, 255, 0.5);;
+    width:80%;
+    grid-row: 1/3;
+    grid-column: 1/2;
+    padding:15px 20px;
+    border-radius: 2px;
+    font-size: 13px;
+    display: flex;
+    flex-flow:column nowrap;
+    gap:15px;
+    color:#353839;
+    margin: 0 auto;
+    list-style: none;
+box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;}
+  .cont_home{
+  background-color: rgba(255, 255, 255, 0.5);
+  width:65%;
+  margin-left:130px;
+  margin-top: 100px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  gap:30px;
+  }
+
+ 
+  h4 {text-align: center;
+    color:#2a52be;
+    font-size:30px;
+    font-family: 'Nunito';
+}
+  .dossindividuel{
+    width: 100%;
+    display: flex;
+    flex-flow:row nowrap;
+    gap:20px;
+  justify-content:space-around;
+  }
+  .contdossier{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  }
+  .contdossier a{ display: flex; justify-content: center;}
+  a img {
+  width:42%;
+  }
+  .contdossier h6 {color:#1d2951;
+  font-size: 14px;
+  font-weight:600;
+  }
+  .dossier2 img{width:25%; cursor: pointer;}
+
+  .div2 {display: flex;
+    justify-content: space-between;
+    width:100%;
+} .doss2{
+width: 100%;
+display: flex;
+flex-flow:row nowrap;
+gap:20px;
+justify-content:space-around;
+height:150px;
+visibility:visible;
+transition: width 0.5s;
+}
+.action{
+background-color: rgba(255,255,255,0.5);
+      width:20%;
+	  
+        padding:15px 20px;
+        border-radius: 2px;
+        font-size: 23px;
+        text-align: left;
+        color:#353839;
+        font-weight: 600;
+    position:absolute;  
+    right:85px;
+	top:20%;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+}
+
+.contdossier a:hover ~ h6 {color:#ff4f00;}
+
+
+@media screen and (max-width:1100px)
+{ 
+  body{ background-size: cover;
+    background-attachment: fixed;
+    background-clip: content-box;
+  }
+}
+
+
+@media screen and (max-width:821px)
+{ body{background-size: cover;
+  background-attachment: fixed;
+  background-clip:content-box;
+}
+
+.containerhead{gap:10%}
+header h1 { font-size: 20px; width:120%;   left:-80px;}
+header h1 .fa-balance-scale {font-size: 35px;margin-left:20%;}
+.dashboard{font-size: 22px; }
+.nomprenom{font-size: 10px;}
+.sous-header li a{font-size: 11px;}
+.afficher{width:120px}
+.info {font-size: 11px;}
+h4{font-size: 30px;}
+.contdossier h6{font-size: 12px;}
+.image-text img{
+  width: 50px;
+  height:45px;
+}
+.sous-header li a{font-size: 10px;
+}}
+@media screen and (max-width:695px)
+{ header h1 {top:10px; font-size: 17px;  left:-60px;}
+  header h1 .fa-balance-scale {font-size: 30px;}
+  .nomprenom{font-size: 9px; width:155px; top:7px}
+  .dashboard{font-size: 19px; }
+  header span .bxs-user-circle
+  {font-size:20px;}
+  header span .bxs-down-arrow
+  {font-size:8px;}
+  .afficher{width:100px}
+  .sous-header li a{font-size: 9px;
+  }}
+
+
+@media screen and (max-width:634px)
+{ header h1 { font-size: 15px;}
+header h1 .fa-balance-scale {font-size: 25px;margin-left:20%;}
+.afficher{width:90px}
+.sous-header li a{font-size: 7px;
+}
+header span .bxs-down-arrow
+{font-size:6px;}
+}
+
+@media screen and (max-width:570px)
+{ header h1 { font-size: 13px; width:150%;}
+header span .bxs-user-circle
+{font-size:16px;}
+.containerhead{gap:20%}
+.dashboard{font-size: 16px; }
+.nomprenom{font-size: 7px;}
+header h1 .fa-balance-scale {font-size: 25px;margin-left:20%;}
+}
+@media screen and (max-width:520px)
+{ header h1 { font-size: 12px; width:150%;}
+header span .bxs-user-circle
+{font-size:14px;}
+.containerhead{gap:20%}
+.dashboard{font-size: 16px; }
+.nomprenom{font-size: 7px;}
+header h1 .fa-balance-scale {font-size: 25px;margin-left:20%;}
+}
+@media screen and (max-width:420px)
+{ header h1 { font-size: 11px; width:150%; top:-5px;}
+header span .bxs-user-circle
+{font-size:16px;}
+.containerhead{gap:20%}
+.dashboard{font-size: 16px; }
+.nomprenom{font-size: 7px;}
+header h1 .fa-balance-scale {font-size: 25px;margin-left:20%;}
+}
+
+
+    button{border:none; background: none;cursor:pointer}
+    button{text-decoration: none; color:#353839}
+    .sous-header button{
+  color:#696969;
+  font-weight:550;
+  font-size: 13px;
+  font-family: arial;
+  text-decoration: none;
+  }
+  .sous-header button :hover{
+  color:#ff8c00;
+  } 
+  .styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.5em;
+    font-family: 'public-sans';
+  
+  }
+  .styled-table thead tr {
+    color:#1974d2;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+    text-align: left;
+    background:#fff;
+  }
+  .styled-table td {
+    padding: 12px 15px;
+  }
+  .styled-table tbody tr {
+    border-bottom: 1px solid #707070;
+    color:#353839;
+    font-size: 11px;
+  }
+  
+  .styled-table tbody tr:hover{
+    font-weight:600;
+    color:#1974d2;
+  }
+
+  
+  
+  </style>
+  
+  <script type="text/javascript">
+function makeTableScroll() {
+//Constant retrieved from server-side via JSP
+var maxRows = 6;
+var table = document.getElementById('example');
+var wrapper = table.parentNode;
+var rowsInTable = table.rows.length;
+var height = 0;
+if (rowsInTable > maxRows) {
+for (var i = 0; i < maxRows; i++) {
+height += table.rows[i].clientHeight;
+}
+wrapper.style.height = height + "px";
+}
+}
+</script>
+</head>
+
+  <body onload="makeTableScroll();">
+  <header>
+
+   
+    <div class="image-text">
+        <span class="image">
+          <img src={% static 'images/logo-removebg-preview.png' %} alt="">
+        </span>
+       
+     
+     <div class="text header-text">
+      <h3><!--Sonatrach--></h3>
+     </div>
+   
+    </div>
+  <div class="div2">
+     <h1> <i class="fa fa-balance-scale" aria-hidden="true"></i> Gestion des contrats d'associations</h1>
+     <span class="nomprenom"><i class='bx bxs-user-circle '></i> {{ request.user.first_name }} {{ request.user.last_name }} <i class='bx bxs-down-arrow ' ></i></span>
+    </div>
+  </header>
+  <ul class="sous-header masquer">
+    <li><a href=" {% url "logoutUser" %} "><i class='bx bx-log-out'></i>Deconnexion</li></a>
+    <li><a href="{% url 'password_change' %}"><i class="fa fa-cog" aria-hidden="true"></i>Paramètres</li></a>
+  </ul>
+
+<div class="container">
+    <div class="containerhead">
+      <div class="info">{% if request.user.is_authenticated %}
+        
+        <li>Utilisateur connecté : {{user.first_name}}  {{user.last_name}}</li>
+        <li>Profession : {% if user.is_chefdep %}
+          Chef du departement
+         {% endif %}
+         {% if user.is_juriste %}
+          Cadre juridique
+         {% endif %}
+         {% if user.is_admin %}
+          Administrateur
+         {% endif %}</li>
+        <li>Dernière connexion :{% language 'fr' %}
+          {{ user.last_login|date:'d F Y' }},  {{ user.last_login|time:"H:i" }}
+       {% endlanguage %} </li>
+        
+      {% endif %}
+      </div>
+      <div class="dashboard">
+        <a href ="{% url "dashboard" %}">
+           <i class="fa fa-tachometer" aria-hidden="true"></i>Tableau de bord </i>
+        </a>
+      </div>
+
+   
+    </div>
+	
+    <div class="cont_home">
+      <h4> Dossiers</h4>
+      <div class="dossindividuel">
+
+          <div class="contdossier">
+           <a href=" {% url "update_st" '0' %} ">
+            <img src={% static 'images/Generica_25576.png' %} alt="">
+           </a>
+           <h6> Soit transmis</h6>
+           </div>
+
+           <div class="contdossier">
+            <a href=" {% url "update_contrat" '0' %} ">
+                <img src={% static 'images/Generica_25576.png' %} alt="">
+            </a>
+            <h6> Contrat</h6>
+            </div>
+            <div class="contdossier">
+              <a href=" {% url "update_avis" '0' %} ">
+                <img src={% static 'images/Generica_25576.png' %} alt="">
+              </a>
+              <h6> Avis juridique</h6>
+              </div>
+
+              <div class="contdossier">
+                <a href=" {% url "update_pds" '0' %} ">
+                    <img src={% static 'images/Generica_25576.png' %} alt="">
+                </a>
+                <h6> Point de situation</h6>
+                </div>
+    </div>    
+    <div class="dossier2">
+      <div class="contdossier">
+        <a>
+            <img src={% static 'images/folders_folder_20348.png' %} alt="">
+        </a>
+        <h6>Documents contractuels</h6>
+        </div>
+    </div>
+    <div class="masquer doc2">
+   
+      <div class="contdossier">
+        <a href=" {% url "update_convention" '0' %} ">
+            <img src={% static 'images/Generica_25576.png' %} alt="">
+        </a>
+        <h6> Convention de <br>  détachement</h6>
+        </div>
+
+       <div class="contdossier">
+        <a href=" {% url "update_avenant" '0' %} ">
+            <img src={% static 'images/Generica_25576.png' %} alt="">
+        </a>
+        <h6> Avenant</h6>
+        </div>
+
+        <div class="contdossier">
+          <a href=" {% url "update_lettreAccord" '0' %} ">
+            <img src={% static 'images/Generica_25576.png' %} alt="">
+          </a>
+          <h6> Lettre accord</h6>
+          </div>
+
+          <div class="contdossier">
+            <a href=" {% url "update_accord" '0' %} ">
+                <img src={% static 'images/Generica_25576.png' %} alt="">
+            </a>
+            <h6>  Accord </h6>
+            </div>
+
+            <div class="contdossier">
+              <a href=" {% url "update_accordOp" '0' %} ">
+                <img src={% static 'images/Generica_25576.png' %} alt="">
+              </a>
+              <h6>  Accord d'operation</h6>
+              </div>
+</div> 
+    </div>
+    {% if messages %}
+    {% for m in messages %}
+    <script>
+    Swal.fire({
+      "title":"Alerte!",
+      "text":'{{m}} d\'un an ',
+      "icon":"warning",
+      "showCancelButton":true,
+      "cancelButtonText":"OK",
+      "confirmButtonText":"Voir",
+      "reverseButtons":true,
+      "confirmButtonColor":"darkred",
+    })
+    .then(function(result) {
+      if(result.isConfirmed) {
+        swal.close()
+        Swal.fire({
+          "title":"Contrats en expiration",
+          "html": "<table id='example' class='styled-table row-border hover' style='width:95%'>"+
+           "<thead>"+
+              "<tr><th> ID</th><th>Titre</th><th>Date sign ature </th><th>Date debut contrat</th><th>Date  fin contrat</th><th>Phase</th><th>Contrat</th></tr>"+
+          "</thead> <tbody>{% for c in ct_died %}<tr>"+
+                 " <td>{{c.code}}</td> <td><a href='http://127.0.0.1:8000/update_contrat/{{c.code}}/#detail' > {{c.titre_contrat}} </a></td><td>{% language 'fr' %} {{ c.date_signature_contrat|date:'d F Y' }}{% endlanguage %}</td>"+
+                 "<td>{% language 'fr' %}{{ c.date_debut_contrat|date:'d F Y' }}{% endlanguage %}</td><td>{% language 'fr' %}{{ c.date_fin_contrat|date:'d F Y' }}{% endlanguage %}</td>"+
+                  "<td>{{c.phase_contrat}}</td>"+
+                  "<td><a href='{{ c.contrat_pdf.url }}' class='btn btn-primary btn-sm' target='_blank'>"+
+                      "<i class='bx bx-show view'></i> </a>"+
+                    "</td>"+
+                    
+            "</tr>{% endfor %} </tbody>"+
+          "</tr></tfoot></table>",
+             
+      
+          "showCancelButton":true,
+          "cancelButtonText":"OK",
+          "confirmButtonText":"Ajouter avenant",
+          "reverseButtons":true,
+          "confirmButtonColor":"darkred",
+          "width":"1100px",
+        }).then(function(result) {
+          if(result.isConfirmed) {
+            window.location.href = "http://127.0.0.1:8000/avenant_create"
+          }
+        })
+      }
+    })
+    </script>
+    
+{% endfor %}
+{% endif%}
+	<div
+	class="action">
+	 <h4> Mes dernieres actions</h4>
+   <table id="example" class="styled-table row-border hover" style="width:95% height: 15em; overflow: auto;">
+    <thead>
+ 
+    </thead>
+    <tbody>
+      {% language 'fr' %}
+    
+      {% if user.is_authenticated %}
+      {% for h in hist1 %}
+        <tr>
+          <td><a href="#">{{ h.history_object }}</a></td>
+          
+          <td> {% if  h.history_type == '+' %}
+            ajouté
+            {% elif h.history_type == '~' %}
+            modifié
+            {% elif h.history_type == '-' %}
+            supprimé
+            {% endif %} </td>
+            <td>  {{ h.history_date|date:'d F Y' }},  &emsp;{{ h.history_date|time:"H:i" }}</td>
+          
+        </tr>
+        {% endfor %}
+        {% for h2 in hist2 %}
+        <tr>
+          <td><a href="#">{{ h2.history_object }}</a></td>
+         
+          <td> {% if  h2.history_type == '+' %}
+            ajouté
+            {% elif h2.history_type == '~' %}
+            modifé
+            {% elif h2.history_type == '-' %}
+            supprimé
+            {% endif %} </td> 
+            <td>  {{ h2.history_date|date:'d F Y' }},  &emsp;{{ h2.history_date|time:"H:i" }}</td>
+        </tr>
+        {% endfor %}
+        {% for h3 in hist3 %}
+        <tr>
+          <td><a href="#">{{ h3.history_object }}</a></td>
+          
+          <td> {% if  h3.history_type == '+' %}
+            ajouté
+            {% elif h3.history_type == '~' %}
+            modifié
+            {% elif h3.history_type == '-' %}
+            supprimé
+            {% endif %} </td>
+            <td>  {{ h3.history_date|date:'d F Y' }},  &emsp;{{ h3.history_date|time:"H:i" }}</td>
+        </tr>
+        {% endfor %}
+        {% for h4 in hist4 %}
+        <tr>
+          <td><a href="#">{{ h4.history_object }}</a></td>
+          
+          <td> {% if  h4.history_type == '+' %}
+            ajouté
+            {% elif h4.history_type == '~' %}
+            modifié
+            {% elif h4.history_type == '-' %}
+            supprimé
+            {% endif %} </td>
+            <td>  {{ h4.history_date|date:'d F Y' }},  &emsp;{{ h4.history_date|time:"H:i" }}</td>
+        </tr>
+        {% endfor %}
+        {% for h5 in hist5 %}
+        <tr>
+          <td><a href="#">{{ h5.history_object }}</a></td>
+          
+          <td> {% if  h5.history_type == '+' %}
+            ajouté
+            {% elif h5.history_type == '~' %}
+            modifié
+            {% elif h5.history_type == '-' %}
+            supprimé
+            {% endif %} </td>
+            <td>  {{ h5.history_date|date:'d F Y' }},  &emsp;{{ h5.history_date|time:"H:i" }}</td>
+        </tr>
+        {% endfor %}
+        {% for h6 in hist6 %}
+        <tr>
+          <td><a href="#">{{ h6.history_object }}</a></td>
+          
+          <td> {% if  h6.history_type == '+' %}
+            ajouté
+            {% elif h6.history_type == '~' %}
+            modifié
+            {% elif h6.history_type == '-' %}
+            supprimé
+            {% endif %} </td>
+            <td>  {{ h6.history_date|date:'d F Y' }},  &emsp;{{ h6.history_date|time:"H:i" }}</td>
+        </tr>
+        {% endfor %}
+        {% for h7 in hist7 %}
+        <tr>
+          <td><a href="#">{{ h7.history_object }}</a></td>
+          
+          <td> {% if  h7.history_type == '+' %}
+            ajouté
+            {% elif h7.history_type == '~' %}
+            modifié
+            {% elif h7.history_type == '-' %}
+            supprimé
+            {% endif %} </td>
+            <td>  {{ h7.history_date|date:'d F Y' }},  &emsp;{{ h7.history_date|time:"H:i" }}</td>
+        </tr>
+        {% endfor %}
+        {% for h8 in hist8 %}
+        <tr>
+          <td><a href="#">{{ h8.history_object }}</a></td>
+          
+          <td> {% if  h8.history_type == '+' %}
+            ajouté
+            {% elif h8.history_type == '~' %}
+            modifié
+            {% elif h8.history_type == '-' %}
+            supprimé
+            {% endif %} </td>
+            <td>  {{ h8.history_date|date:'d F Y' }},  &emsp;{{ h8.history_date|time:"H:i" }}</td>
+        </tr>
+        {% endfor %}
+        {% for h9 in hist9 %}
+        <tr>
+          <td><a href="#">{{ h9.history_object }}</a></td>
+          
+          <td> {% if  h9.history_type == '+' %}
+            ajouté
+            {% elif h9.history_type == '~' %}
+            modifié
+            {% elif h9.history_type == '-' %}
+            supprimé
+            {% endif %} </td>
+            <td>  {{ h9.history_date|date:'d F Y' }},  &emsp;{{ h9.history_date|time:"H:i" }}</td>
+        </tr>
+        {% endfor %}
+        {% for 10 in hist10 %}
+        <tr>
+          <td><a href="#">{{ h10.history_object }}</a></td>
+          
+          <td> {% if  h10.history_type == '+' %}
+            ajouté
+            {% elif h10.history_type == '~' %}
+            modifié
+            {% elif h10.history_type == '-' %}
+            supprimé
+            {% endif %} </td>
+            <td>  {{ h10.history_date|date:'d F Y' }},  &emsp;{{ h10.history_date|time:"H:i" }}</td>
+        </tr>
+        {% endfor %}
+        {% for h11 in hist11 %}
+        <tr>
+          <td><a href="#">{{ h11.history_object }}</a></td>
+          
+          <td> {% if  h11.history_type == '+' %}
+            ajouté
+            {% elif h11.history_type == '~' %}
+            modifié
+            {% elif h11.history_type == '-' %}
+            supprimé
+            {% endif %} </td>
+            <td>  {{ h11.history_date|date:'d F Y' }},  &emsp;{{ h11.history_date|time:"H:i" }}</td>
+        </tr>
+        {% endfor %}
+       
+        {%  endif  %} 
+        {% endlanguage %}
+        
+        
+    </tbody>
+    <tfoot>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            
+
+        </tr>
+    </tfoot>
+</table>
+	</div>
+	
+  </div>
+    <script>
+      var  documents= document.querySelector('.doc2')
+      var img = document.querySelector('.dossier2 img')
+      var h6 = document.querySelector('.dossier2 h6')
+
+      img.addEventListener('click',function(){
+    if (documents.classList.contains('doss2'))
+    {documents.classList.remove('doss2')
+    documents.classList.add('masquer')
+    h6.style.color='#1d2951'
+    
+    }
+    else
+    {documents.classList.remove('masquer')
+      documents.classList.add('doss2')
+      h6.style.color='#ff4f00'
+    }
+  })
+  
+/*--------------------------------------------------------*/
+      var sousheader=document.querySelector('.sous-header') 
+  var downarrow = document.querySelector('header .bxs-down-arrow') 
+  
+  downarrow.addEventListener('click',function(){
+    if (sousheader.classList.contains('afficher'))
+    {sousheader.classList.remove('afficher')
+    downarrow.style.color='#707070'
+    sousheader.classList.add('masquer')
+    
+    }
+    else
+    {sousheader.classList.remove('masquer')
+    downarrow.style.color='#ff8c00'
+      sousheader.classList.add('afficher')
+    }
+  })
+    
+    </script>
+   
+    <div>
+</body>
+</html>
+

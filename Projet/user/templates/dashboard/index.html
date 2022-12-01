@@ -1,0 +1,18 @@
+{% extends 'partials/base.html' %}
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-10 offset-md-1">
+            {{ map1|safe }}
+        </div>
+        <div class="legend">
+            <i class='bx bxs-map one'></i>: un seul partenaire
+            <br>
+            <i class='bx bxs-circle many'></i>: plusieurs partenaires
+        </div>
+    </div>
+</div>
+
+{% endblock %}

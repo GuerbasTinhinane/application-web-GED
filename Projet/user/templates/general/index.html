@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Accord</title>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href={% static 'css/style.css' %} >
+  <link rel="stylesheet" type="text/css" href={% static 'css/ajouter.css' %} >
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+
+  <body>
+
+    <nav class="sidebar ">
+      <header>
+        <div class="image-text">
+           <span class="image">
+              <img src={% static 'images/logo-removebg-preview.png' %} alt="logo">
+           </span>
+          
+          <div class="text header-text">
+            {% if request.user.is_authenticated %}
+               {% if user.is_chefdep %}
+                <span class="profession">Chef du departement</span>
+               {% endif %}
+               {% if user.is_juriste %}
+                <span class="profession">Juriste</span>
+               {% endif %}
+               {% if user.is_admin %}
+                <span class="profession">Administrateur</span>
+               {% endif %}
+             {% endif %}
+          </div>
+          
+        </div>
+        <i class='bx bx-menu toggle'></i>
+      </header>
+
+      <div class="menu-bar">
+        <div class="menu">
+         
+          <ul class="menu-link">
+
+            <li class="nav-link">
+              <a href="chefdep" style="background:whitesmoke ;" >
+                <i class='bx bx-home-alt icon'></i>
+                <span class="text nav-text">Dashboard</span>
+              </a>
+            </li>
+          
+            <div class="droppdown">
+              <li class="nav-link dropbtn ">
+                <a  >
+                  <i class='bx bx-file icon'></i>
+                  <span class="text nav-text">Soit transmis</span>
+                </a>
+              </li>
+              <div class="dropdownst-content">
+                <a href="st.html"class='ast'><i class='bx bx-list-plus'></i> Ajouter </a>
+                <a href="tablest.html"class='cst'><i class='bx bx-show-alt'></i> Consulter</a>
+              </div>
+            </div>
+          
+
+            
+            <div class="droppdown">
+              <li class="nav-link dropbtn ">
+                <a>
+                  <i class="fa fa-files-o icon" aria-hidden="true"></i>
+                  <span class="text nav-text">Contrats</span>
+                </a>
+              </li>
+              <div class="dropdownct-content">
+                <a href="contrat.html" class='act'><i class='bx bx-list-plus'></i> Ajouter </a>
+                <a href="tablecontrat.html" class='cct'><i class='bx bx-show-alt'></i> Consulter</a>
+              </div>
+            </div>
+           
+
+        <li class="nav-link down">
+          <a> 
+            <i class='bx bx-folder-open icon'></i>
+            <span class="text nav-text">Documents <br> Contractuels <i class='bx bxs-chevron-down dropdown-btn'></i> </span>
+          </a>
+        </li>
+
+        <div class="drop-down">
+        <ul class="dropdown-container hide ">
+         
+          <div class="droppdown1 sous-menu">
+            <li class="dropbtn1">
+              -  Convention de <br> détachement
+            </li>
+            <div class="dropdownconv-content">
+              <a href="convention.html" class="a1"><i class='bx bx-list-plus'></i> Ajouter </a>
+              <a href="tableconvention.html"  class="a2"><i class='bx bx-show-alt'></i> Consulter</a>
+            </div>
+          </div>
+
+          <div class="droppdown2 sous-menu">
+            <li class="dropbtn2">
+             -  Avenant
+            </li>
+            <div class="dropdownav-content ">
+              <a href="avenant.html"  class="a4"><i class='bx bx-list-plus'></i> Ajouter </a>
+              <a href="tableavenant.html"  class="a3"><i class='bx bx-show-alt'></i> Consulter</a>
+            </div>
+          </div>
+
+          <div class="droppdown3 sous-menu">
+            <li class="dropbtn3">
+              -  Lettre accord
+            </li>
+            <div class="dropdownla-content">
+              <a href="lettreaccord.html"  class="a5"><i class='bx bx-list-plus'></i> Ajouter </a>
+              <a href="tablelettreaccord.html"  class="a6"><i class='bx bx-show-alt'></i> Consulter</a>
+            </div>
+          </div>
+
+          <div class="droppdown4 sous-menu">
+            <li class="dropbtn4">
+              -  Accord
+            </li>
+            <div class="dropdownac-content">
+              <a href="accord_create"  class="a7"><i class='bx bx-list-plus'></i> Ajouter </a>
+              <a href="affiche_accord"  class="a8"><i class='bx bx-show-alt'></i> Consulter</a>
+            </div>
+          </div>
+
+          <div class="droppdown5 sous-menu">
+            <li class=" dropbtn5">
+              -  Accord d'operation
+            </li>
+            <div class="dropdownaop-content">
+              <a href="accordoperation.html"  class="a9"><i class='bx bx-list-plus'></i> Ajouter </a>
+              <a href="tableaccordoperation.html"  class="a10"><i class='bx bx-show-alt'></i> Consulter</a>
+            </div>
+          </div>
+          
+        </ul>
+      </div>
+   
+
+        <div class="droppdown">
+          <li class="nav-link dropbtn ">
+            <a>
+              <i class="fa fa-balance-scale icon" aria-hidden="true"></i>
+              <span class="text nav-text">Avis juridique</span>
+            </a>
+          </li>
+          <div class="dropdownaj-content">
+            <a href="avisjuridique.html"class='aaj'><i class='bx bx-list-plus'></i> Ajouter </a>
+            <a href="tableavisjuridique.html" class='caj'><i class='bx bx-show-alt'></i> Consulter</a>
+          </div>
+        </div>
+
+
+        <div class="droppdown">
+          <li class="nav-link dropbtn ">
+            <a>
+              <i class='bx bx-pencil icon'></i>
+              <span class="text nav-text">Points de situations</span>
+            </a>
+          </li>
+          <div class="dropdownpds-content">
+            <a href="pds.html" class='apds'><i class='bx bx-list-plus'></i> Ajouter </a>
+            <a href="tablepds.html" class='cpds'><i class='bx bx-show-alt'></i> Consulter</a>
+          </div>
+        </div>
+       
+    
+    </div>
+  </div>
+</nav>
+
+    <section class="home">
+      <li class="link1 hide">Dashboard</li>
+      <li class="link2 hide">Soit transmis</li>
+      <li class="link3 hide">Contrats</li>
+      <li class="link4 hide">Documents contractuels</li>
+      <li class="link5 hide">Avis juridique</li>
+      <li class="link6 hide">Points de situations</li>
+      <li class="slink1 hide">Convention de détachement</li>
+      <li class="slink2 hide">Avenant</li>
+      <li class="slink3 hide">Lettre accord</li>
+      <li class="slink4 hide">Accord</li>
+      <li class="slink5 hide">Accord d'opérations</li>
+     <header>
+      <h1>  <i class="fa fa-balance-scale" aria-hidden="true"></i> Gestion des contrats d'associations</h1>
+      <span class="nomprenom"><i class='bx bxs-user-circle '></i> {{ request.user.first_name }} {{ request.user.last_name }}  <i class='bx bxs-down-arrow ' ></i></span>
+</header>
+    <ul class="sous-header masquer">
+      <li><a href="#"><i class='bx bx-log-out'></i>Deconnexion</li></a>
+      <li><a href="{% url "password_change" %}"><i class="fa fa-cog" aria-hidden="true"></i>Paramètres</li></a>
+    </ul>
+    <div class="container ">
+
+  </div>
+
+    </section>
+
+
+  
+
+
+<!-- partial -->
+  <script  src={% static "js/script.js" %}>
+  </script>
+</body>
+</html>

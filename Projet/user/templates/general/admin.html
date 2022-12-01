@@ -1,0 +1,98 @@
+{% extends 'general/base.html' %}
+{% load static %}
+{% block content %}
+<style>"background: url('static/images/imag01.jpg') no-repeat center fixed; 
+    -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */"
+    img{height:200px;
+    width:400px;
+     }
+     .inter{
+      display:flex;
+      gap:30px;
+     }
+     .cont{
+      color: #353839;
+     }
+
+</style>
+<div class="cont">
+    <h1>Vous êtes actuellement connecté en tant que administrateur</h1>
+</div>
+    
+    
+<div class="cont">
+   <a href= "http://127.0.0.1:8000/admin/">Accéder à la page d'administration Django  </a>
+      
+    </div>
+
+    <div class="cont">
+   <a href="http://127.0.0.1:8000/register">Ajouter un utilisateur <br> <center> <i class='bx bxs-user-plus'  style="margin-right: 0"></i></center> </a>
+    
+</div>
+
+<div class="cont">
+    
+    <a href="{% url 'update_user' '0' %}" style="cursor:pointer">Tous les utilisateurs<br> <center><i class="fa fa-users" aria-hidden="true" style="margin-right: 0"></i></center></a>
+</div>
+<div class="cont">
+    <a href='#' class="cst interface">Accéder à l'application</a></div>
+
+    <script>
+        var sousheader=document.querySelector('.sous-header') 
+var downarrow = document.querySelector('header .bxs-down-arrow') 
+
+downarrow.addEventListener('click',function(){
+  if (sousheader.classList.contains('afficher'))
+  {sousheader.classList.remove('afficher')
+  downarrow.style.color='#707070'
+  sousheader.classList.add('masquer')
+  
+  }
+  else
+  {sousheader.classList.remove('masquer')
+  downarrow.style.color='#ff8c00'
+    sousheader.classList.add('afficher')
+  }
+})
+  
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script>
+    var interface = document.querySelector('.interface')
+
+    interface.addEventListener("click", function(){
+      
+        
+       
+        Swal.fire({
+          "title":"Veuillez choisir l'interface",
+          "type":"info",
+          "html":
+          '<div class="inter">'+
+
+           '<div>'+
+             '<img src={% static "images/chefdep.png" %} alt="" height=200 width=200 > '+
+             '<a href="{% url "chefdep" %}">Chef du département</a>'+
+           '</div>'+
+
+           '<div>'+
+             '<img src={% static "images/juriste.png" %} alt="" height=200 width=200 >'+
+             '<a href="{% url "juriste" %}">Cadre juridique</a>'+
+           '</div>'+
+
+          '</div>',
+          "showCloseButton":true,
+          "showCancelButton":false,
+          "showConfirmButton":false,
+        })
+      
+    })
+    
+    
+
+    </script>
+
+    {% endblock %}

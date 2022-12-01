@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+
+{% block content %}
+ <h2>L'accord :</h2>
+ <ul>
+    <li>Code de l'accord:  {{ acc.code }}</li>
+    <li>Titre de l'accord: {{ acc.titre }}</li>
+    <li>Date de signature de l'accord: {{ acc.date_de_signature }}</li>
+    <li>Le document de l'accord: 
+        <a href="{{ acc.doc_pdf.url }}" class="btn btn-primary btn-sm" target="_blank">
+            view PDF </a>
+        </li>
+    
+
+</ul>
+  {% comment %} <a href="{% url 'stage-update' stage.id %}">Modifier ce stage</a>
+  <a href="{% url 'stage-delete' stage.id%}">Supprimer ce stage</a> {% endcomment %}
+
+  <a href="affiche_accord">Retourner à l'affichage</a>
+
+{% endblock %}
+</body>
+</html>
+

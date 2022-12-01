@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    
+    <title>Affichage</title>
+    <!-- {% load sweetify %}
+    {% sweetify %} -->
+</head>
+<body>
+    <h1>Accords</h1>
+    <br><br>
+    <table class="table">
+        <thead>
+            <tr>
+              <th>Consulter</th>
+              <th>Num</th>
+              <th>Titre</th>
+              <th>Date</th>
+              <th>Document</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for acc in accord %}
+            <tr>
+                
+                <td>  <a href="{% url 'affiche_detail_accord' acc.num%}">ici</a> </td>
+                <td>{{ acc.titre }}</td>
+                <td>{{ acc.date_de_signature }}</td>
+                <td>{{ acc.contrat.titre_contrat }}</td>
+                <a class="related-widget-wrapper-link add-related" id="add_id_contrat" 
+                href="/admin/user/contrat/add/?_to_field=id_contract&_popup=1" 
+                title="Add another contrat">
+                <img src="/static/admin/img/icon-addlink.svg" alt="Add"></a>
+
+                <td>{{ acc.num }}</td>
+                <td><a href="{{ acc.doc_pdf.url }}" class="btn btn-primary btn-sm" target="_blank"> view PDF </a></td>
+        
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

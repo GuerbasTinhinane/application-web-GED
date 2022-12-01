@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  {% load i18n %}
+  <meta charset="UTF-8">
+  <title>Accord</title>
+  <script src="jquery-3.5.1.js"></script>
+  {% load static %}
+  <link rel="stylesheet" href={% static 'css/modal.css' %}>
+  <link rel="stylesheet" href={% static 'css/style.css' %}>
+  <link rel="stylesheet" href={% static 'css/table.css' %}>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+  <link rel="icon" type="image/png"  href={% static 'images/logo.png' %}>
+  <!-- data table links -->
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> <!-- ????-->
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+ 
+ 
+
+  <!-- search column-->
+  <script src="https:../../media/js/jquery.js"></script>
+  <script src="https:../../media/js/jquery.dataTables.js"></script>
+
+
+<!--- export files -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.css"/>
+ 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
+
+<!-- toggle columns-->
+<script src="http:../../media/js/jquery.js"></script>
+<script src="http:../../media/js/jquery.dataTables.js"></script>
+<link rel="stylesheet" href="http:../../media/css/jquery.dataTables.css">
+
+
+<link rel="stylesheet" href={% static 'css/designtable.css' %}>
+<script src={% static 'js/tables.js' %}></script>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<style>
+  
+
+</style>
+</head>
+
+
+<body>
+
+  <nav class="sidebar ">
+    <header>
+      <div class="image-text">
+        <span class="image">
+          <a href= "{% url 'juriste' %}"> <img src={% static 'images/logo-removebg-preview.png' %} alt="logo"> </a>
+        </span>
+
+
+         <div class="text header-text">
+          <span class='name'> SONATRACH </span>
+        </div>
+        
+        
+      </div>
+      <i class='bx bx-menu toggle'></i>
+    </header>
+
+    <div class="menu-bar">
+      <div class="menu">
+       
+        <ul class="menu-link">
+
+          
+        
+
+              <div class="droppdown">
+                <li class="nav-link dropbtn ">
+                  <a  >
+                    <i class='bx bx-file icon'></i>
+                    <span class="text nav-text">Soit transmis</span>
+                  </a>
+                </li>
+                <div class="dropdownst-content">
+                  <a href=" {% url "st_create" %} "class='ast'><i class='bx bx-list-plus'></i> Ajouter </a>
+                  <a href=" {% url "update_st" 0 %} "class='cst'><i class='bx bx-show-alt'></i> Consulter</a>
+                </div>
+              </div>
+            
+
+              
+              <div class="droppdown">
+                <li class="nav-link dropbtn ">
+                  <a>
+                    <i class="fa fa-files-o icon" aria-hidden="true"></i>
+                    <span class="text nav-text">Contrats</span>
+                  </a>
+                </li>
+                <div class="dropdownct-content">
+                  <a href=" {% url "contrat_create" %} " class='act'><i class='bx bx-list-plus'></i> Ajouter </a>
+                  <a href=" {% url "update_contrat" '0' %} " class='cct'><i class='bx bx-show-alt'></i> Consulter</a>
+                </div>
+              </div>
+             
+
+          <li class="nav-link down">
+            <a style="background:whitesmoke;"> 
+              <i class='bx bx-folder-open icon'></i>
+              <span class="text nav-text">Documents <br> Contractuels <i class='bx bxs-chevron-down dropdown-btn'></i> </span>
+            </a>
+          </li>
+
+          <div class="drop-down">
+          <ul class="dropdown-container hide ">
+           
+            <div class="droppdown1 sous-menu">
+              <li class="dropbtn1">
+                -  Convention de <br> détachement
+              </li>
+              <div class="dropdownconv-content">
+                <a href=" {% url "convention_create" %} " class="a1"><i class='bx bx-list-plus'></i> Ajouter </a>
+                <a href=" {% url "update_convention" '0' %} "  class="a2"><i class='bx bx-show-alt'></i> Consulter</a>
+              </div>
+            </div>
+
+            <div class="droppdown2 sous-menu">
+              <li class="dropbtn2">
+               -  Avenant
+              </li>
+              <div class="dropdownav-content ">
+                <a href=" {% url "avenant_create" %} "  class="a3"><i class='bx bx-list-plus'></i> Ajouter </a>
+                <a href=" {% url "update_avenant" '0' %} "  class="a4"><i class='bx bx-show-alt'></i> Consulter</a>
+              </div>
+            </div>
+
+            <div class="droppdown3 sous-menu">
+              <li class="dropbtn3">
+                -  Lettre accord
+              </li>
+              <div class="dropdownla-content">
+                <a href=" {% url "lettreAccord_create" %} "  class="a5"><i class='bx bx-list-plus'></i> Ajouter </a>
+                <a href=" {% url "update_lettreAccord" '0' %} "  class="a6"><i class='bx bx-show-alt'></i> Consulter</a>
+              </div>
+            </div>
+
+            <div class="droppdown4 sous-menu">
+              <li class="dropbtn4">
+                -  Accord
+              </li>
+              <div class="dropdownac-content">
+                <a href=" {% url "accord_create" %} "  class="a7"><i class='bx bx-list-plus'></i> Ajouter </a>
+                <a href=" {% url "update_accord" '0' %} "  class="a8"><i class='bx bx-show-alt'></i> Consulter</a>
+              </div>
+            </div>
+
+            <div class="droppdown5 sous-menu">
+              <li class=" dropbtn5">
+                -  Accord d'operation
+              </li>
+              <div class="dropdownaop-content">
+                <a href=" {% url "accordOperation_create" %} "  class="a9"><i class='bx bx-list-plus'></i> Ajouter </a>
+                <a href=" {% url "update_accordOp" '0' %} "  class="a10"><i class='bx bx-show-alt'></i> Consulter</a>
+              </div>
+            </div>
+            
+          </ul>
+        </div>
+     
+
+          <div class="droppdown">
+            <li class="nav-link dropbtn ">
+              <a>
+                <i class="fa fa-balance-scale icon" aria-hidden="true"></i>
+                <span class="text nav-text">Avis juridique</span>
+              </a>
+            </li>
+            <div class="dropdownaj-content">
+              <a href=" {% url "avisJuridique_create" %} "class='aaj'><i class='bx bx-list-plus'></i> Ajouter </a>
+              <a href=" {% url "update_avis" '0' %} " class='caj'><i class='bx bx-show-alt'></i> Consulter</a>
+            </div>
+          </div>
+
+
+          <div class="droppdown">
+            <li class="nav-link dropbtn ">
+              <a>
+                <i class='bx bx-pencil icon'></i>
+                <span class="text nav-text">Points de situations</span>
+              </a>
+            </li>
+            <div class="dropdownpds-content">
+              <a href=" {% url "pds_create" %} " class='apds'><i class='bx bx-list-plus'></i> Ajouter </a>
+              <a href=" {% url "update_pds" '0' %} " class='cpds'><i class='bx bx-show-alt'></i> Consulter</a>
+            </div>
+          </div>
+          <li class="nav-link navlink2">
+            <a href="{% url "dashboard" %}">
+              <i class="fa fa-tachometer icon" aria-hidden="true"></i>
+              <span class="text nav-text">Dashboard</span>
+            </a>
+          </li>
+          
+      
+      
+      </div>
+    </div>
+  </nav>
+  
+      <section class="home">
+        <li class="link2 hide">Soit transmis</li>
+        <li class="link3 hide">Contrats</li>
+        <li class="link4 hide">Documents contractuels</li>
+        <li class="link5 hide">Avis juridique</li>
+        <li class="link6 hide">Points de situations</li>
+        <li class="link7 hide">Dashboard</li>
+    <li class="slink1 hide">Convention de détachement</li>
+    <li class="slink2 hide">Avenant</li>
+    <li class="slink3 hide">Lettre accord</li>
+    <li class="slink4 hide">Accord</li>
+    <li class="slink5 hide">Accord d'opérations</li>
+   <header>
+    <h1>  <i class="fa fa-balance-scale" aria-hidden="true"></i> Gestion des contrats d'associations</h1>
+    <span class="nomprenom"><i class='bx bxs-user-circle '></i> {{ request.user.first_name }} {{ request.user.last_name }} <i class='bx bxs-down-arrow ' ></i></span>
+</header>
+  <ul class="sous-header masquer">
+    <li><a href=" {% url "logoutUser" %} "><i class='bx bx-log-out'></i>Deconnexion</li></a>
+    <li><a href="{% url "password_change" %}"><i class="fa fa-cog" aria-hidden="true"></i>Paramètres</li></a>
+  </ul>
+    
+
+     
+    <div class="container">
+      <h3>Accord</h3>
+      <div class="header">
+        <a href="{% url "juriste" %}"> <i class='bx bx-home-alt icon'></i></a> / Accord  / <a href=" {% url "update_accord" '0' %} ">Liste des accords</a>  </div>
+         <div class="entete">
+          <li><a href="{% url 'accord_create' %}">Ajouter</a></li>
+         </div> 
+         <div class="containertable">
+          <div class="columntitle">
+            <i class='bx bx-columns icone2'></i> Colonnes <i class='bx bxs-chevron-down icone2'></i>
+           </div>
+           <div class="column hide">
+           
+            
+            <a class="toggle-vis blue" data-column="0">ID Accord </a> 
+            <a class="toggle-vis blue" data-column="1">Titre</a> 
+            <a class="toggle-vis blue" data-column="2">   Titre </a> 
+            <a class="toggle-vis blue" data-column="3">   Date de signature </a> 
+            <a class="toggle-vis blue" data-column="4">  Accord</a> 
+            <a class="toggle-vis blue" data-column="5">  Actions </a> 
+            </div>
+           <table id="example" class="styled-table row-border hover" cellspacing="10px" width="100%">
+        <thead>
+          <tr>
+            
+            <th>ID Accord </th>
+            <th>ID du contrat</th>
+            <th>Titre</th>
+            <th>Date de signature</th>
+            <th>Accord</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+          {% for acc in accord %}
+          <tr>
+              
+              <td>{{ acc.code }}</a></td>
+              <td>{{ acc.contrat.code}} 
+              <td>{{ acc.titre }}</td>
+              <td>{% language 'fr' %}
+                {{ acc.date_de_signature|date:'d F Y' }}
+             {% endlanguage %}</td>
+              
+              <td>
+                  <a href="{{ acc.doc_pdf.url }}" class="btn btn-primary btn-sm" target="_blank">
+                      view PDF </a>
+                  </td>
+                  <td><a href="#" class="update" ><i class='bx bxs-edit up'></i></a>
+                    <a href="#" class="del" ><i class='bx bxs-trash de'></i></a></td>
+              
+          </tr>
+          {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+              
+              <th>ID Accord </th>
+              <th>ID du contrat</th>
+              <th>Titre</th>
+              <th>Date de signature</th>
+              <th>Accord</th>
+              <th>Action</th>
+            </tr>
+        </tfoot>
+    </table>
+  </div>
+  </div>
+
+    
+
+{% comment %} apres supression et apres modification  {% endcomment %}
+{% if messages %}
+    {% for m in messages %}
+    <script>
+     Swal.fire({
+      icon:'success',
+      position: 'top',
+      text: "{{m}}",
+      showConfirmButton: false,
+      timer:2500
+    })
+    </script>
+    {% endfor %}
+    {% endif%}
+
+  
+
+</section>
+{% comment %} class modal update  {% endcomment %}
+<div id="demo" class="modal samemodal">
+<div class="modal_content">
+  <a href="#" class="modal_close">&times;</a>
+  <div class="form ">
+   <form method="POST" enctype="multipart/form-data" id="ajouterdc" action="#">
+     {% csrf_token %}
+     <h2> Accord</h2>
+     <div class="containerform accordop"><center>
+      <input name="code" type="hidden" id="code" value='{{x.code}}' >
+      <label for="titre">Titre</label>
+      <input name="titre" type="text" id="titre" value='{{x.titre}}' required><br>
+      <label for="datee">Date de signature</label>
+      {{form.date_de_signature}}<br><br>
+      <label for="doc">Document</label>
+      {{form.doc_pdf}}
+      <input name="contrat" type="hidden" id="contrat" value='{{x.contrat}}' required>
+       <div class="boutton"> 
+          <input type="submit" value="Valider">
+        </div> 
+      </div> </center>
+    </form>
+  </div>   
+</div>
+</div>
+
+
+  
+
+<!-- partial -->
+    <script src={% static 'js/script.js' %}></script>
+    <script src={% static 'js/media.js' %}></script>
+    <script src={% static 'js/toggle.js' %}></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+     
+    
+  <script>
+    var td = document.querySelectorAll('td:first-child')
+    var update = document.querySelectorAll('.update')
+    var del = document.querySelectorAll('.del')
+    
+    window.addEventListener("load", function(){
+    for(var i=0; i<update.length;i++)
+    {
+    update[i].href="http://127.0.0.1:8000/update_accord/"+ td[i].innerHTML +"/#demo"
+
+    del[i].addEventListener("click", function(){
+      for(var i=0; i<del.length;i++)
+      {
+        var x=td[i].innerHTML
+       
+        Swal.fire({
+          "title":"Êtes-vous sûr?",
+          "text":"Vous ne pourrez pas revenir en arrière !",
+          "icon":"question",
+          "showCancelButton":true,
+          "cancelButtonText":"Non, Annuler",
+          "confirmButtonText":"Oui, Supprimer",
+          "reverseButtons":true,
+          "confirmButtonColor":"darkred",
+        })
+        .then(function(result) {
+          if(result.isConfirmed) {
+            window.location.href = "http://127.0.0.1:8000/delete_accord/"+ x +"/"
+          }
+        })
+      }
+    })
+    }
+    })
+
+    </script>
+</body>
+</html>
+
